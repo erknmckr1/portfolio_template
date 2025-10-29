@@ -1,0 +1,259 @@
+{
+  "navbar": {
+    "home": "Ana Sayfa",
+    "biography": "Biyografi",
+    "resume": "Özgeçmiş",
+    "portfolio": "Portföy",
+    "blog": "Blog",
+    "contact": "İletişim",
+    "logo":"CAKIR",
+    "services":"Hizmetlerim"
+  },
+
+  "hero": {
+    "title1": "YAZILIM",
+    "title2": "GELİŞTİRİCİ",
+    "description": "Frenify'in kurucusuyum. Londra merkezli profesyonel bir UI/UX tasarımcısı ve web geliştiricisiyim. Zaman zaman serbest çalışıyorum.",
+    "signature": "Felicia Amor",
+    "image":"/pic.avif"
+  },
+
+  "biography": {
+    "title": "BİYOGRAFİ",
+    "description": "12 yıldan fazla deneyime sahip bir serbest ön uç geliştiricisiyim. Londra, Birleşik Krallık merkezliyim. Dünyanın dört bir yanındaki harika insanlar için web öğeleri tasarlıyor ve kodluyorum. Yeni insanlarla çalışmayı seviyorum — her yeni insan yeni bir deneyimdir.",
+    "infoData": [
+      { "label": "İsim", "value": "Felicia Amor" },
+      { "label": "Doğum Günü", "value": "14 Haziran 1992" },
+      { "label": "Yaş", "value": "29" },
+      { "label": "Adres", "value": "Londra, İngiltere" },
+      { "label": "Telefon", "value": "(+1) 7785 355 344" },
+      { "label": "Skype", "value": "Felicia.A" },
+      { "label": "E-posta", "value": "felicia@domainname.com" },
+      { "label": "Telegram", "value": "@feliciaamor" }
+    ]
+  },
+
+  "resume": {
+    "tabs": {
+      "experience": "Deneyim",
+      "education": "Eğitim",
+      "skills": "Yetenekler"
+    },
+
+    "experience": [
+      {
+        "company": "Frenify LLC",
+        "period": "2018 — Günümüz",
+        "title": "Kıdemli Front-end Mühendisi",
+        "description": "Modern UI teknolojileriyle etkileşimli web arayüzleri geliştirme, tasarım sistemleri oluşturma ve performans optimizasyonu sağlama."
+      },
+      {
+        "company": "Google LLC",
+        "period": "2016 — 2018",
+        "title": "Front-end Geliştirici",
+        "description": "Google Ads ekibinde yeniden kullanılabilir bileşenler ve kullanıcı dostu arayüzler geliştirdim."
+      },
+      {
+        "company": "Twitter LLC",
+        "period": "2011 — 2016",
+        "title": "Grafik Tasarımcı",
+        "description": "Sosyal medya kampanyaları için görsel tasarımlar, marka kimliği ve kullanıcı arayüzü konseptleri oluşturdum."
+      }
+    ],
+
+    "education": [
+      {
+        "school": "Frenify Üniversitesi",
+        "period": "2014 — 2017",
+        "title": "Bilgisayar Bilimleri",
+        "description": "Web teknolojileri, yazılım mühendisliği ve modern frameworkler üzerine uzmanlık eğitimi."
+      },
+      {
+        "school": "Edu Üniversitesi",
+        "period": "2011 — 2014",
+        "title": "Yüksek Lisans",
+        "description": "Kullanıcı deneyimi tasarımı ve front-end geliştirme alanında tez çalışması."
+      },
+      {
+        "school": "Columbia Koleji",
+        "period": "2007 — 2011",
+        "title": "Lisans Derecesi",
+        "description": "Bilgisayar mühendisliği temel eğitimi ve yazılım geliştirme temelleri."
+      }
+    ],
+
+    "skills": {
+      "items": [
+        {
+          "skill": "HTML5 / CSS3 / Tailwind CSS / Shadcn UI / Material UI",
+          "percent": 90
+        },
+        {
+          "skill": "JavaScript / TypeScript",
+          "percent": 80
+        },
+        {
+          "skill": "React.js / Next.js",
+          "percent": 80
+        },
+        {
+          "skill": "Node.js / Express.js / NestJS",
+          "percent": 80
+        },
+        {
+          "skill": "PostgreSQL / MySQL / Prisma / TypeORM",
+          "percent": 60
+        },
+        {
+          "skill": "Git / GitHub / CI-CD",
+          "percent": 85
+        },
+        {
+          "skill": "Docker / Mikroservisler / RabbitMQ",
+          "percent": 60
+        }
+      ],
+      "summary": "Minimal tasarıma, temiz tipografiye ve iyi yazılmış koda tutkusu olan serbest bir tasarımcıyım. Yüksek kaliteli ve uygun maliyetli web & yazılım geliştirme hizmetleri sunuyorum."
+    },
+    "summary" :"A freelance creative designer with a love for minimal design,"
+  },
+  "portfolio": {
+    "title": "PORTFÖY",
+    "description": "Şu anda profesyonel, görsel olarak sofistike, teknolojik açıdan yetkin, duyarlı ve çok işlevli bir web teması üzerinde çalışıyorum. Benimle çalışmakla ilgileniyorsanız, aşağıdaki butona tıklayarak benimle hemen iletişime geçebilir ve projeniz hakkında konuşabiliriz.",
+    "button": "İlgileniyorsanız, Benimle İletişime Geçin",
+    "projects": [
+      {
+        "title": "Smashing Magazine Baskı",
+        "subtitle": "illüstrasyon, tasarım",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "tamamlandı"
+      },
+      {
+        "title": "Revolution Kitabı",
+        "subtitle": "illüstrasyon, tasarım",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "tamamlandı"
+      },
+      {
+        "title": "Dreamers Logosu",
+        "subtitle": "illüstrasyon, tasarım",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "tamamlandı"
+      },
+      {
+        "title": "Modern Çalışma Alanı",
+        "subtitle": "markalaşma, ui/ux",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "tamamlandı"
+      }
+    ]
+  },
+  "services": {
+    "title": "HİZMETLER",
+    "description": "Sizin gibi hırslı işletmelere, farkındalık yaratarak, web trafiğini artırarak, müşterilerle bağlantı kurarak ve genel satışları büyüterek daha fazla kâr elde etmeleri için yardımcı oluyorum. Tek kuralım, ajanslar aracılığıyla çalışmamam — doğrudan müşterilerle iletişim kurmayı tercih ederim.",
+    "cards": [
+      {
+        "id": 1,
+        "title": "Web ve Ürün Tasarımı",
+        "description": "Düşük sadakatli wireframe ve prototiplerden, son aşama kodlanmış tasarıma kadar her süreci kapsar. Yalnızca statik tasarımlar sunmakla kalmıyor, aynı zamanda tarayıcıda (♥ CSS) ve Figma gibi araçlarda çalışmayı seviyoruz. Modern framework’ler kullanarak geliştiricilerle iş birliği içinde eksiksiz dijital deneyimler sunuyoruz.",
+        "price": "₺15.000",
+        "highlight": ["CSS", "Figma", "Responsive", "Statamic", "Kirby"]
+      },
+      {
+        "id": 2,
+        "title": "Marka Kimliği",
+        "description": "Tek bir logo tasarımından tam kapsamlı bir marka kimliği sistemine kadar. Mevcut logoları marka değerini kaybetmeden güçlendirmeye inanıyoruz. Her kimlik projesi markanızın hikayesini özgün biçimde yansıtmak üzere tasarlanır.",
+        "price": "₺12.000",
+        "highlight": ["Logo Tasarımı", "Marka Rehberi", "Görsel Sistem"]
+      },
+      {
+        "id": 3,
+        "title": "İkon Tasarımı",
+        "description": "Ürününüzün kişiliğine ve marka tonuna uygun özel ikon setleri oluşturuyoruz. İkonlar piksel mükemmelliğinde el ile hazırlanır ve hem web hem mobil uygulamalar için optimize edilir.",
+        "price": "₺7.000",
+        "highlight": ["SVG", "Piksel Hassasiyetli", "Vektör İkonlar"]
+      },
+      {
+        "id": 4,
+        "title": "UI/UX Danışmanlığı",
+        "description": "Mevcut web sitenizi veya ürününüzü inceler, kullanılabilirlik, erişilebilirlik ve dönüşüm optimizasyonu için uygulanabilir öneriler sunarız. Kullanıcı deneyimini iyileştirmek isteyen startup’lar için idealdir.",
+        "price": "₺10.000",
+        "highlight": ["Kullanılabilirlik", "Erişilebilirlik", "Wireframe"]
+      },
+      {
+        "id": 5,
+        "title": "Landing Page Geliştirme",
+        "description": "Next.js ve Tailwind CSS kullanılarak oluşturulmuş, yüksek dönüşüm sağlayan SEO dostu landing sayfalar. Performans, analiz ve responsive tasarım için optimize edilmiştir.",
+        "price": "₺18.000",
+        "highlight": ["Next.js", "Tailwind", "SEO", "Analitik"]
+      },
+      {
+        "id": 6,
+        "title": "E-Ticaret Tasarımı",
+        "description": "Shopify veya WooCommerce tabanlı, görsel olarak etkileyici, hızlı ve satış odaklı e-ticaret siteleri tasarlayıp geliştiriyoruz. Özel tema ve ödeme deneyimi dahil.",
+        "price": "₺25.000",
+        "highlight": ["Shopify", "WooCommerce", "Ödeme UX"]
+      }
+    ]
+  },
+  "blog": {
+    "title": "HABERLER VE İPUÇLARI",
+    "button":"Okumaya Devam Et",
+    "description": "Tasarım, yaratıcılık ve teknoloji hakkındaki içgörülerle güncel kalın. Modern web deneyimlerine ilham veren hikayeleri ve düşünceleri keşfedin.",
+    "posts": [
+      {
+        "id": 1,
+        "title": "Tasarım Hakkında Bildikleriniz ve Bilmedikleriniz.",
+        "date": "25 Eylül 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 2,
+        "title": "2025'te Web Tasarımını Şekillendirecek 10 UI/UX Trendi.",
+        "date": "14 Ağustos 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 3,
+        "title": "Minimalizm Modern Marka Kimliklerini Nasıl Şekillendiriyor?",
+        "date": "02 Temmuz 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 4,
+        "title": "Geliştiriciler Tasarım Prensiplerini Neden Anlamalı?",
+        "date": "18 Haziran 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 5,
+        "title": "2025'te Öne Çıkan Bir Portföy Nasıl Oluşturulur?",
+        "date": "10 Mayıs 2021",
+        "image": "/pic.avif"
+      }
+    ]
+  },
+  "contact": {
+    "title": "İLETİŞİM",
+    "description": "Sizin gibi hırslı işletmelere, farkındalık yaratarak, web trafiğini artırarak, müşterilerle bağlantı kurarak ve genel satışları büyüterek daha fazla kâr elde etmeleri için yardımcı oluyorum. Tek kuralım, ajanslar aracılığıyla çalışmamam — doğrudan müşterilerle iletişim kurmayı tercih ederim.",
+    "form": {
+      "name": "İsim *",
+      "email": "E-posta *",
+      "phone": "Telefon",
+      "message": "Mesajınız",
+      "button": "Mesaj Gönder"
+    },
+
+    "addressSection": {
+      "addressLabel": "Adres",
+      "addressValue": "İstanbul",
+      "phoneLabel": "Telefon",
+      "phoneValue": "(+706) 898-0751",
+      "email": "erknm.ckr@gmail.com"
+    }
+  }
+}

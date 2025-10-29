@@ -1,0 +1,262 @@
+{
+  "navbar": {
+    "home": "Home",
+    "biography": "Biography",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "logo": "CAKIR",
+    "services": "Services"
+  },
+
+  "hero": {
+    "title1": "SOFTWARE",
+    "title2": "DEVELOPER",
+    "description": "I'm the founder of Frenify. A professional UI/UX designer and web developer based in London. Occasionally working as a freelancer.",
+    "signature": "Felicia Amor",
+    "image": "/pic.avif"
+  },
+
+  "biography": {
+    "title": "BIOGRAPHY",
+    "description": "I’m a freelance front-end developer with over 12 years of experience. Based in London, UK. I code and create web elements for amazing people around the world. I love working with new people — every new person means a new experience.",
+    "infoData": [
+      { "label": "Name", "value": "Felicia Amor" },
+      { "label": "Birthday", "value": "June 14, 1992" },
+      { "label": "Age", "value": "29" },
+      { "label": "Address", "value": "London, United Kingdom" },
+      { "label": "Phone", "value": "(+1) 7785 355 344" },
+      { "label": "Skype", "value": "Felicia.A" },
+      { "label": "Email", "value": "felicia@domainname.com" },
+      { "label": "Telegram", "value": "@feliciaamor" }
+    ]
+  },
+
+  "resume": {
+    "tabs": {
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills"
+    },
+
+    "experience": [
+      {
+        "company": "Frenify LLC",
+        "period": "2018 — Present",
+        "title": "Senior Front-end Engineer",
+        "description": "Developing interactive web interfaces using modern UI technologies, creating design systems, and ensuring performance optimization."
+      },
+      {
+        "company": "Google LLC",
+        "period": "2016 — 2018",
+        "title": "Front-end Developer",
+        "description": "Worked in the Google Ads team to build reusable components and user-friendly interfaces."
+      },
+      {
+        "company": "Twitter LLC",
+        "period": "2011 — 2016",
+        "title": "Graphic Designer",
+        "description": "Created visual designs, brand identity, and UI concepts for social media campaigns."
+      }
+    ],
+
+    "education": [
+      {
+        "school": "Frenify University",
+        "period": "2014 — 2017",
+        "title": "Computer Science",
+        "description": "Specialized in web technologies, software engineering, and modern frameworks."
+      },
+      {
+        "school": "Edu University",
+        "period": "2011 — 2014",
+        "title": "Master’s Degree",
+        "description": "Thesis focused on user experience design and front-end development."
+      },
+      {
+        "school": "Columbia College",
+        "period": "2007 — 2011",
+        "title": "Bachelor’s Degree",
+        "description": "Fundamentals of computer engineering and software development."
+      }
+    ],
+
+    "skills": {
+      "items": [
+        {
+          "skill": "HTML5 / CSS3 / Tailwind CSS / Shadcn UI / Material UI",
+          "percent": 90
+        },
+        {
+          "skill": "JavaScript / TypeScript",
+          "percent": 80
+        },
+        {
+          "skill": "React.js / Next.js",
+          "percent": 80
+        },
+        {
+          "skill": "Node.js / Express.js / NestJS",
+          "percent": 80
+        },
+        {
+          "skill": "PostgreSQL / MySQL / Prisma / TypeORM",
+          "percent": 60
+        },
+        {
+          "skill": "Git / GitHub / CI-CD",
+          "percent": 85
+        },
+        {
+          "skill": "Docker / Microservices / RabbitMQ",
+          "percent": 60
+        }
+      ],
+      "summary": "A freelance creative designer with a passion for minimal design, clean typography, and well-written code. Providing high-quality and cost-effective web and software development services."
+    },
+    "summary": "A freelance creative designer with a love for minimal design."
+  },
+
+  "portfolio": {
+    "title": "PORTFOLIO",
+    "description": "Currently, I’m working on a professional, visually sophisticated, technologically proficient, responsive, and multi-functional web theme. If you’re interested in working with me, click the button below and let’s talk about your project.",
+    "button": "If You’re Interested, Get in Touch With Me",
+    "projects": [
+      {
+        "title": "Smashing Magazine Print",
+        "subtitle": "illustration, design",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "finished"
+      },
+      {
+        "title": "Revolution Book",
+        "subtitle": "illustration, design",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "finished"
+      },
+      {
+        "title": "Dreamers Logo",
+        "subtitle": "illustration, design",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "finished"
+      },
+      {
+        "title": "Modern Workspace",
+        "subtitle": "branding, ui/ux",
+        "image": "/pic.avif",
+        "type": "fullstack",
+        "status": "finished"
+      }
+    ]
+  },
+
+  "services": {
+    "title": "SERVICES",
+    "description": "I help ambitious businesses like yours generate more profit by building awareness, driving web traffic, connecting with customers, and growing overall sales. My only rule — I never work through agencies; I prefer direct communication with clients.",
+    "cards": [
+      {
+        "id": 1,
+        "title": "Web & Product Design",
+        "description": "From low-fidelity wireframes and prototypes to final coded designs. We don’t just deliver static visuals; we love working directly in the browser (♥ CSS) and tools like Figma. Using modern frameworks, we collaborate with developers to deliver complete digital experiences.",
+        "price": "$500",
+        "highlight": ["CSS", "Figma", "Responsive", "Statamic", "Kirby"]
+      },
+      {
+        "id": 2,
+        "title": "Brand Identity",
+        "description": "From a single logo to a complete branding system. We believe in refining and updating existing logos to enhance effectiveness without losing brand equity. Each identity project is crafted to reflect your unique story.",
+        "price": "$450",
+        "highlight": ["Logo Design", "Brand Guidelines", "Visual System"]
+      },
+      {
+        "id": 3,
+        "title": "Iconography",
+        "description": "We create custom icon sets that match your product’s personality and tone. Icons are hand-crafted for pixel perfection and optimized for web and mobile applications.",
+        "price": "$200",
+        "highlight": ["SVG", "Pixel Perfect", "Vector Icons"]
+      },
+      {
+        "id": 4,
+        "title": "UI/UX Consulting",
+        "description": "We audit your existing website or product and provide actionable recommendations for usability, accessibility, and conversion optimization. Ideal for startups looking to improve user experience.",
+        "price": "$350",
+        "highlight": ["Usability", "Accessibility", "Wireframes"]
+      },
+      {
+        "id": 5,
+        "title": "Landing Page Development",
+        "description": "High-converting, SEO-friendly landing pages built with Next.js and Tailwind CSS. Optimized for performance, analytics, and responsive design.",
+        "price": "$600",
+        "highlight": ["Next.js", "Tailwind", "SEO", "Analytics"]
+      },
+      {
+        "id": 6,
+        "title": "E-commerce Design",
+        "description": "We design and develop Shopify or WooCommerce stores that are visually appealing, fast, and optimized for sales. Includes custom themes and checkout experiences.",
+        "price": "$850",
+        "highlight": ["Shopify", "WooCommerce", "Checkout UX"]
+      }
+    ]
+  },
+
+  "blog": {
+    "title": "NEWS & TIPS",
+    "button": "Continue Reading",
+    "description": "Stay up to date with insights about design, creativity, and technology. Explore stories and ideas that inspire modern web experiences.",
+    "posts": [
+      {
+        "id": 1,
+        "title": "What You Know About Design & What You Don’t.",
+        "date": "September 25, 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 2,
+        "title": "Top 10 UI/UX Trends That Will Shape Web Design in 2025.",
+        "date": "August 14, 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 3,
+        "title": "How Minimalism Shapes Modern Brand Identities.",
+        "date": "July 02, 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 4,
+        "title": "Why Developers Should Understand Design Principles.",
+        "date": "June 18, 2021",
+        "image": "/pic.avif"
+      },
+      {
+        "id": 5,
+        "title": "Building a Portfolio That Stands Out in 2025.",
+        "date": "May 10, 2021",
+        "image": "/pic.avif"
+      }
+    ]
+  },
+
+  "contact": {
+    "title": "CONTACT",
+    "description": "I help ambitious businesses like yours generate more profits by building awareness, driving traffic, connecting with customers, and increasing overall sales. My only rule — I don’t work through agencies; I prefer direct communication with clients.",
+    "form": {
+      "name": "Name *",
+      "email": "Email *",
+      "phone": "Phone",
+      "message": "Message",
+      "button": "Send Message"
+    },
+    "addressSection": {
+      "addressLabel": "Address",
+      "addressValue": "Istanbul",
+      "phoneLabel": "Phone",
+      "phoneValue": "(+706) 898-0751",
+      "email": "erknm.ckr@gmail.com"
+    }
+  }
+}
