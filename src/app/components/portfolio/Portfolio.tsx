@@ -83,16 +83,17 @@ function Portfolio() {
     },
   };
 
-  const portfolioItems =
-    t<
-      {
-        title: string;
-        subtitle: string;
-        image: string;
-        type: string;
-        status: string;
-      }[]
-    >("portfolio.projects");
+  const portfolioItems = t<
+    {
+      title: string;
+      subtitle: string;
+      image: string;
+      type: string;
+      status: string;
+      tech: string[];
+      description: string;
+    }[]
+  >("portfolio.projects");
 
   return (
     <section
@@ -177,6 +178,26 @@ function Portfolio() {
                   )} absolute top-4 right-4 px-4 uppercase py-1 rounded-md font-semibold text-sm border border-black shadow-md`}
                 >
                   {item.status}
+                </div>
+
+                {/* Hover Katmanı */}
+                <div className="absolute inset-0 bg-black/90 text-white opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-500 flex flex-col  p-6">
+                  <h3 className="text-lg md:text-xl font-bold mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-200 line-clamp-3">
+                    {item.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {item.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="text-xs bg-white text-black px-2 py-1 rounded font-semibold"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 

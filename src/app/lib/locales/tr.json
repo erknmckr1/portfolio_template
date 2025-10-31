@@ -6,30 +6,27 @@
     "portfolio": "Portföy",
     "blog": "Blog",
     "contact": "İletişim",
-    "logo":"CAKIR",
-    "services":"Hizmetlerim"
+    "logo": "ecakir.dev",
+    "services": "Hizmetlerim"
   },
 
   "hero": {
     "title1": "YAZILIM",
     "title2": "GELİŞTİRİCİ",
-    "description": "Frenify'in kurucusuyum. Londra merkezli profesyonel bir UI/UX tasarımcısı ve web geliştiricisiyim. Zaman zaman serbest çalışıyorum.",
-    "signature": "Felicia Amor",
-    "image":"/pic.avif"
+    "description": "Kullanıcı deneyimini ve performansı ön planda tutarak, tasarım ve yazılımı buluşturan modern web projeleri geliştiriyorum..",
+    "signature": "Erkan CAKIR",
+    "image": "/pic.avif"
   },
 
   "biography": {
     "title": "BİYOGRAFİ",
-    "description": "12 yıldan fazla deneyime sahip bir serbest ön uç geliştiricisiyim. Londra, Birleşik Krallık merkezliyim. Dünyanın dört bir yanındaki harika insanlar için web öğeleri tasarlıyor ve kodluyorum. Yeni insanlarla çalışmayı seviyorum — her yeni insan yeni bir deneyimdir.",
+    "description": "Modern web teknolojileriyle ölçeklenebilir, kullanıcı odaklı sistemler tasarlıyor ve geliştiriyorum. Kodun estetikle buluştuğu noktada verimli, temiz ve sürdürülebilir çözümler üretmeye odaklanıyorum. Sürekli öğrenmeyi ve ürettiğim her projede bir adım ileri gitmeyi hedefliyorum.",
     "infoData": [
-      { "label": "İsim", "value": "Felicia Amor" },
-      { "label": "Doğum Günü", "value": "14 Haziran 1992" },
-      { "label": "Yaş", "value": "29" },
-      { "label": "Adres", "value": "Londra, İngiltere" },
-      { "label": "Telefon", "value": "(+1) 7785 355 344" },
-      { "label": "Skype", "value": "Felicia.A" },
-      { "label": "E-posta", "value": "felicia@domainname.com" },
-      { "label": "Telegram", "value": "@feliciaamor" }
+      { "label": "İsim", "value": "Erkan Mustafa CAKIR" },
+      { "label": "Doğum Günü", "value": "21 NİSAN" },
+      { "label": "Adres", "value": "Istanbul" },
+      { "label": "Telefon", "value": "(+90) 000 00 00" },
+      { "label": "E-posta", "value": "erknm.ckr@gmail.com" }
     ]
   },
 
@@ -42,43 +39,25 @@
 
     "experience": [
       {
-        "company": "Frenify LLC",
-        "period": "2018 — Günümüz",
-        "title": "Kıdemli Front-end Mühendisi",
-        "description": "Modern UI teknolojileriyle etkileşimli web arayüzleri geliştirme, tasarım sistemleri oluşturma ve performans optimizasyonu sağlama."
+        "company": "Midas Hediyelik Eşya",
+        "period": "Ağustos 2023 — Günümüz",
+        "title": "Full Stack Geliştirici",
+        "description": "Şirketin operasyonel verimliliğini artırmak amacıyla üretim takibi, izin yönetimi ve veri analizi modüllerini içeren tam kapsamlı web sistemleri geliştiriyorum. Next.js ve Express.js tabanlı mimaride; Redux, JWT ve MSSQL kullanarak güvenli, ölçeklenebilir ve sürdürülebilir çözümler tasarladım. Kod yapısını modüler hale getirerek kullanıcı arayüzü, API katmanı ve veritabanı arasında güçlü bir entegrasyon sağladım. Ayrıca kiosk ekranları, anlık veri takibi ve yönetici paneli gibi bileşenlerin geliştirilmesinde aktif rol aldım."
       },
       {
-        "company": "Google LLC",
-        "period": "2016 — 2018",
-        "title": "Front-end Geliştirici",
-        "description": "Google Ads ekibinde yeniden kullanılabilir bileşenler ve kullanıcı dostu arayüzler geliştirdim."
-      },
-      {
-        "company": "Twitter LLC",
-        "period": "2011 — 2016",
-        "title": "Grafik Tasarımcı",
-        "description": "Sosyal medya kampanyaları için görsel tasarımlar, marka kimliği ve kullanıcı arayüzü konseptleri oluşturdum."
+        "company": "Freelance",
+        "period": "2023 — Günümüz",
+        "title": "Frontend Geliştirici",
+        "description": "Kurumsal web siteleri, vitrin sayfaları ve SEO uyumlu arayüzler geliştirdim. Next.js, React ve Tailwind CSS kullanarak mobil uyumlu, hızlı ve estetik kullanıcı deneyimleri oluşturdum. Müşteri ihtiyaçlarını analiz edip tasarımdan yayına kadar tüm süreci yönettim."
       }
     ],
 
     "education": [
       {
-        "school": "Frenify Üniversitesi",
-        "period": "2014 — 2017",
-        "title": "Bilgisayar Bilimleri",
-        "description": "Web teknolojileri, yazılım mühendisliği ve modern frameworkler üzerine uzmanlık eğitimi."
-      },
-      {
-        "school": "Edu Üniversitesi",
-        "period": "2011 — 2014",
-        "title": "Yüksek Lisans",
-        "description": "Kullanıcı deneyimi tasarımı ve front-end geliştirme alanında tez çalışması."
-      },
-      {
-        "school": "Columbia Koleji",
-        "period": "2007 — 2011",
-        "title": "Lisans Derecesi",
-        "description": "Bilgisayar mühendisliği temel eğitimi ve yazılım geliştirme temelleri."
+        "school": "Sakarya Üniversitesi",
+        "period": "2017 — 2021",
+        "title": "Metalurji ve Malzeme Mühendisliği Lisans",
+        "description": "Mühendislik eğitimi sürecinde analitik düşünme, problem çözme ve süreç optimizasyonu alanlarında güçlü bir temel edindim. Mezuniyet sonrasında kariyerimi yazılım geliştirme alanına yönlendirerek modern web teknolojileri üzerine odaklandım."
       }
     ],
 
@@ -90,145 +69,168 @@
         },
         {
           "skill": "JavaScript / TypeScript",
-          "percent": 80
+          "percent": 85
         },
         {
           "skill": "React.js / Next.js",
-          "percent": 80
+          "percent": 90
         },
         {
           "skill": "Node.js / Express.js / NestJS",
-          "percent": 80
+          "percent": 70
         },
         {
-          "skill": "PostgreSQL / MySQL / Prisma / TypeORM",
-          "percent": 60
-        },
-        {
-          "skill": "Git / GitHub / CI-CD",
-          "percent": 85
+          "skill": "PostgreSQL / MSSQL / TypeORM / Sequelize",
+          "percent": 70
         },
         {
           "skill": "Docker / Mikroservisler / RabbitMQ",
           "percent": 60
+        },
+        {
+          "skill": "Git / GitHub / CI-CD / Vercel",
+          "percent": 85
         }
       ],
-      "summary": "Minimal tasarıma, temiz tipografiye ve iyi yazılmış koda tutkusu olan serbest bir tasarımcıyım. Yüksek kaliteli ve uygun maliyetli web & yazılım geliştirme hizmetleri sunuyorum."
+      "summary": "Modern web teknolojileriyle kullanıcı odaklı, performanslı ve ölçeklenebilir uygulamalar geliştiriyorum. Frontend alanında uzman, backend tarafında ise mikroservis mimarisi ve NestJS üzerine yoğunlaşan bir Full Stack geliştiriciyim."
     },
-    "summary" :"A freelance creative designer with a love for minimal design,"
+
+    "summary": "Minimal ve işlevsel tasarımlara odaklanan, modern web teknolojileriyle kullanıcı odaklı deneyimler geliştiren bir yazılım geliştiricisiyim."
   },
   "portfolio": {
     "title": "PORTFÖY",
-    "description": "Şu anda profesyonel, görsel olarak sofistike, teknolojik açıdan yetkin, duyarlı ve çok işlevli bir web teması üzerinde çalışıyorum. Benimle çalışmakla ilgileniyorsanız, aşağıdaki butona tıklayarak benimle hemen iletişime geçebilir ve projeniz hakkında konuşabiliriz.",
+    "description": "Şu anda modern teknolojilerle geliştirilen, kullanıcı odaklı ve ölçeklenebilir web projeleri üzerinde çalışıyorum. Tasarım, performans ve sürdürülebilir mimariyi bir araya getirerek markalara özel dijital deneyimler oluşturuyorum. Benimle çalışmak veya projeniz hakkında konuşmak isterseniz, aşağıdaki butona tıklayarak hemen iletişime geçebilirsiniz.",
     "button": "İlgileniyorsanız, Benimle İletişime Geçin",
     "projects": [
       {
-        "title": "Smashing Magazine Baskı",
-        "subtitle": "illüstrasyon, tasarım",
-        "image": "/pic.avif",
+        "title": "MES (Manufacturing Execution System)",
+        "subtitle": "Üretim Takip ve Kiosk Sistemi",
+        "image": "/projects/mes/img1.png",
         "type": "fullstack",
-        "status": "tamamlandı"
+        "status": "tamamlandı",
+        "description": "Fabrika operasyonlarında iş emri takibi, makine bazlı üretim kaydı, izin ve vardiya yönetimi modüllerini içeren modüler bir MES platformu geliştirdim. Next.js, Express.js, Tailwind CSS ve MSSQL kullanarak uçtan uca UI ve backend servislerini tasarladım. Sistem, üretim görünürlüğünü artırarak kağıt tabanlı takip süreçlerini ortadan kaldırdı ve operatör, yönetici, kalite gibi farklı rollere gerçek zamanlı dijital yönetim imkânı sağladı.",
+        "tech": ["Next.js", "React", "Express.js", "Tailwind CSS", "MSSQL"]
       },
       {
-        "title": "Revolution Kitabı",
-        "subtitle": "illüstrasyon, tasarım",
-        "image": "/pic.avif",
+        "title": "Üretim Analiz ve AI Destekli Dashboard",
+        "subtitle": "Veri Analitiği ve Üretim Takip Sistemi",
+        "image": "/projects/analytics/img2.png",
         "type": "fullstack",
-        "status": "tamamlandı"
+        "status": "tamamlandı",
+        "description": "React, Next.js, Tailwind CSS ve Express.js kullanarak geliştirilmiş tam kapsamlı bir üretim analiz ve takip panelidir. Sistem, makine bazlı üretim verilerini görselleştirerek iş akışlarını gerçek zamanlı izleme imkânı sunar. Sağ paneldeki dinamik filtreleme modülü sayesinde kullanıcılar, üretim durumlarını ve performans metriklerini anlık olarak güncelleyebilir. Ayrıca entegre AI Yardımcı Paneli, sistem verilerine dayalı hızlı analiz ve öneriler sunarak kullanıcı deneyimini güçlendirir.",
+        "tech": [
+          "Next.js",
+          "React",
+          "Express.js",
+          "Tailwind CSS",
+          "MSSQL",
+          "RESTful API"
+        ]
       },
       {
-        "title": "Dreamers Logosu",
-        "subtitle": "illüstrasyon, tasarım",
-        "image": "/pic.avif",
-        "type": "fullstack",
-        "status": "tamamlandı"
+        "title": "WAWA Interiors Web Sitesi",
+        "subtitle": "Figma'dan Next.js'e Piksel Hassasiyetinde Uygulama",
+        "image": "/projects/wawa/wawa.png",
+        "type": "frontend",
+        "status": "tamamlandı",
+        "description": "WAWA Interiors için modern, duyarlı bir web sitesi geliştirdim. Detaylı Figma tasarımını, Next.js ve Tailwind CSS kullanarak piksel hassasiyetinde, performans odaklı bir yapıya dönüştürdüm. Kod yapısı modüler ve ölçeklenebilir olacak şekilde tasarlandı; tarayıcı uyumluluğu, erişilebilirlik ve performans optimizasyonu önceliklendirildi. Bu proje, tasarım dosyalarını yüksek kaliteli, üretim seviyesinde web deneyimlerine dönüştürme yetkinliğimi göstermektedir.",
+        "tech": [
+          "Next.js",
+          "Tailwind CSS",
+          "Figma",
+          "Responsive Design",
+          "Performance Optimization"
+        ]
       },
       {
-        "title": "Modern Çalışma Alanı",
-        "subtitle": "markalaşma, ui/ux",
-        "image": "/pic.avif",
-        "type": "fullstack",
-        "status": "tamamlandı"
+        "title": "Real Mühendislik Kurumsal Web Sitesi",
+        "subtitle": "Periyodik Kontrol & Ölçüm Hizmetleri",
+        "image": "/projects/real/real.png",
+        "type": "wordpress",
+        "status": "tamamlandı",
+        "description": "Real Mühendislik için kurumsal kimliğe uygun, modern bir web sitesi geliştirdim. WordPress altyapısı üzerine inşa edilen proje; performans, SEO uyumu ve kullanıcı dostu yönetim paneli odaklı olarak yapılandırıldı. Tema özelleştirmeleri ve modül entegrasyonlarıyla markanın ihtiyaçlarına özel dinamik içerik yönetimi sağlandı. Bu proje, WordPress tabanlı profesyonel çözümler geliştirme ve tasarım uygulama kabiliyetimi göstermektedir.",
+        "tech": [
+          "WordPress",
+          "Elementor",
+          "Responsive Design",
+          "Theme Customization"
+        ]
+      },
+      {
+        "title": "Şahinlife İnşaat Web Platformu",
+        "subtitle": "Kurumsal İnşaat ve Proje Tanıtım Sitesi",
+        "image": "/projects/sah/sahin.png",
+        "type": "NextJS",
+        "status": "tamamlandı",
+        "description": "Şahinlife İnşaat için modern ve güvenilir bir kurumsal web platformu geliştirdim. Next.js ve Tailwind CSS ile kullanıcı arayüzünü sade, mobil uyumlu ve performans odaklı şekilde tasarladım. Backend tarafında NestJS kullanarak dinamik içerik yönetimi, iletişim formu işlemleri ve güvenli veri akışı sağladım. Proje, modern frontend yapısıyla güçlü bir backend mimarisini birleştiren uçtan uca bir çözüm olarak tamamlandı.",
+        "tech": ["Next.js", "Tailwind CSS", "TypeScript", "Responsive Design"]
       }
     ]
   },
   "services": {
     "title": "HİZMETLER",
-    "description": "Sizin gibi hırslı işletmelere, farkındalık yaratarak, web trafiğini artırarak, müşterilerle bağlantı kurarak ve genel satışları büyüterek daha fazla kâr elde etmeleri için yardımcı oluyorum. Tek kuralım, ajanslar aracılığıyla çalışmamam — doğrudan müşterilerle iletişim kurmayı tercih ederim.",
+    "description": "Modern web teknolojileriyle güçlü, ölçeklenebilir ve kullanıcı odaklı dijital çözümler geliştiriyorum. Tasarımdan backend mimarisine kadar her aşamada performans, güvenlik ve sürdürülebilirlik önceliğimdir. Doğrudan işletmelerle çalışarak, ihtiyaçlarınıza özel yazılım çözümleri sunuyorum.",
     "cards": [
       {
         "id": 1,
-        "title": "Web ve Ürün Tasarımı",
-        "description": "Düşük sadakatli wireframe ve prototiplerden, son aşama kodlanmış tasarıma kadar her süreci kapsar. Yalnızca statik tasarımlar sunmakla kalmıyor, aynı zamanda tarayıcıda (♥ CSS) ve Figma gibi araçlarda çalışmayı seviyoruz. Modern framework’ler kullanarak geliştiricilerle iş birliği içinde eksiksiz dijital deneyimler sunuyoruz.",
-        "price": "₺15.000",
-        "highlight": ["CSS", "Figma", "Responsive", "Statamic", "Kirby"]
+        "title": "Full Stack Web Geliştirme",
+        "description": "Next.js, NestJS ve TypeScript kullanarak performanslı, ölçeklenebilir ve güvenli web uygulamaları geliştiriyorum. Projelerimde frontend, backend ve veritabanı yapısını uçtan uca tasarlayıp entegre ediyorum.",
+        "price": "₺",
+        "highlight": [
+          "Next.js",
+          "NestJS",
+          "TypeScript",
+          "PostgreSQL",
+          "RESTful API"
+        ]
       },
       {
         "id": 2,
-        "title": "Marka Kimliği",
-        "description": "Tek bir logo tasarımından tam kapsamlı bir marka kimliği sistemine kadar. Mevcut logoları marka değerini kaybetmeden güçlendirmeye inanıyoruz. Her kimlik projesi markanızın hikayesini özgün biçimde yansıtmak üzere tasarlanır.",
-        "price": "₺12.000",
-        "highlight": ["Logo Tasarımı", "Marka Rehberi", "Görsel Sistem"]
+        "title": "Frontend Tasarım & Kodlama",
+        "description": "Figma tasarımlarını piksel hassasiyetinde, duyarlı ve performans odaklı arayüzlere dönüştürüyorum. Tailwind CSS, Shadcn UI ve modern React yapılarıyla estetik ve hızlı kullanıcı deneyimleri sunuyorum.",
+        "price": "₺",
+        "highlight": [
+          "Next.js",
+          "Tailwind",
+          "Shadcn UI",
+          "Responsive",
+          "Pixel Perfect"
+        ]
       },
       {
         "id": 3,
-        "title": "İkon Tasarımı",
-        "description": "Ürününüzün kişiliğine ve marka tonuna uygun özel ikon setleri oluşturuyoruz. İkonlar piksel mükemmelliğinde el ile hazırlanır ve hem web hem mobil uygulamalar için optimize edilir.",
-        "price": "₺7.000",
-        "highlight": ["SVG", "Piksel Hassasiyetli", "Vektör İkonlar"]
+        "title": "AI Entegrasyonlu Otomasyonlar",
+        "description": " OpenAI ve benzeri yapay zekâ API’lerini entegre ederek otomasyon süreçlerini akıllı hale getiriyorum. Görsel üretimi, metin analizi, veri işleme ve karar destek sistemleri gibi alanlarda SaaS projelerine AI tabanlı özellikler kazandırıyorum. Bu sayede manuel işlemleri azaltıp kullanıcı deneyimini ve verimliliği artırıyorum.",
+        "price": "₺",
+        "highlight": ["AI API", "OpenAI", "Automation", "Pipeline"]
       },
       {
         "id": 4,
-        "title": "UI/UX Danışmanlığı",
-        "description": "Mevcut web sitenizi veya ürününüzü inceler, kullanılabilirlik, erişilebilirlik ve dönüşüm optimizasyonu için uygulanabilir öneriler sunarız. Kullanıcı deneyimini iyileştirmek isteyen startup’lar için idealdir.",
-        "price": "₺10.000",
-        "highlight": ["Kullanılabilirlik", "Erişilebilirlik", "Wireframe"]
+        "title": "Kurumsal Dashboard ve Analitik Sistemler",
+        "description": "Üretim, satış veya operasyon verilerini görselleştiren dinamik dashboard’lar geliştiriyorum. Gerçek zamanlı veri akışı, filtreleme ve kullanıcı bazlı raporlama özellikleriyle tam kontrol sağlanır.",
+        "price": "₺",
+        "highlight": [
+          "React",
+          "Chart Libraries",
+          "Express.js",
+          "MSSQL",
+          "Data Visualization"
+        ]
       },
       {
         "id": 5,
-        "title": "Landing Page Geliştirme",
-        "description": "Next.js ve Tailwind CSS kullanılarak oluşturulmuş, yüksek dönüşüm sağlayan SEO dostu landing sayfalar. Performans, analiz ve responsive tasarım için optimize edilmiştir.",
-        "price": "₺18.000",
-        "highlight": ["Next.js", "Tailwind", "SEO", "Analitik"]
-      },
-      {
-        "id": 6,
-        "title": "E-Ticaret Tasarımı",
-        "description": "Shopify veya WooCommerce tabanlı, görsel olarak etkileyici, hızlı ve satış odaklı e-ticaret siteleri tasarlayıp geliştiriyoruz. Özel tema ve ödeme deneyimi dahil.",
-        "price": "₺25.000",
-        "highlight": ["Shopify", "WooCommerce", "Ödeme UX"]
+        "title": "Landing Page & Portföy Geliştirme",
+        "description": "Marka ve bireyler için yüksek dönüşüm sağlayan SEO dostu landing page ve kişisel portföy siteleri geliştiriyorum. Tasarım, içerik ve performans açısından tamamen optimize edilir.",
+        "price": "₺",
+        "highlight": ["Next.js", "Tailwind", "SEO", "Analytics", "Vercel"]
       }
     ]
   },
   "blog": {
     "title": "HABERLER VE İPUÇLARI",
-    "button":"Okumaya Devam Et",
+    "button": "Okumaya Devam Et",
     "description": "Tasarım, yaratıcılık ve teknoloji hakkındaki içgörülerle güncel kalın. Modern web deneyimlerine ilham veren hikayeleri ve düşünceleri keşfedin.",
     "posts": [
-      {
-        "id": 1,
-        "title": "Tasarım Hakkında Bildikleriniz ve Bilmedikleriniz.",
-        "date": "25 Eylül 2021",
-        "image": "/pic.avif"
-      },
-      {
-        "id": 2,
-        "title": "2025'te Web Tasarımını Şekillendirecek 10 UI/UX Trendi.",
-        "date": "14 Ağustos 2021",
-        "image": "/pic.avif"
-      },
-      {
-        "id": 3,
-        "title": "Minimalizm Modern Marka Kimliklerini Nasıl Şekillendiriyor?",
-        "date": "02 Temmuz 2021",
-        "image": "/pic.avif"
-      },
-      {
-        "id": 4,
-        "title": "Geliştiriciler Tasarım Prensiplerini Neden Anlamalı?",
-        "date": "18 Haziran 2021",
-        "image": "/pic.avif"
-      },
       {
         "id": 5,
         "title": "2025'te Öne Çıkan Bir Portföy Nasıl Oluşturulur?",
@@ -239,13 +241,15 @@
   },
   "contact": {
     "title": "İLETİŞİM",
-    "description": "Sizin gibi hırslı işletmelere, farkındalık yaratarak, web trafiğini artırarak, müşterilerle bağlantı kurarak ve genel satışları büyüterek daha fazla kâr elde etmeleri için yardımcı oluyorum. Tek kuralım, ajanslar aracılığıyla çalışmamam — doğrudan müşterilerle iletişim kurmayı tercih ederim.",
+    "description": "İşletmelere ve girişimcilere özel, modern ve ölçeklenebilir web çözümleri geliştiriyorum. Her proje, ihtiyaçlarınıza özel olarak tasarlanır ve doğrudan iletişimle yürütülür. Fikirlerinizi dinliyor, teknik süreci şeffaf biçimde yönetiyor ve ortaya ölçülebilir, sürdürülebilir sonuçlar çıkarıyorum.",
     "form": {
       "name": "İsim *",
       "email": "E-posta *",
       "phone": "Telefon",
       "message": "Mesajınız",
-      "button": "Mesaj Gönder"
+      "button": "Mesaj Gönder",
+      "success": "Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğim.",
+      "error": "Mesajınız gönderilirken bir hata oluştu. Lütfen tekrar deneyin."
     },
 
     "addressSection": {

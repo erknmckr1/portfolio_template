@@ -19,7 +19,6 @@ export function useTranslation() {
     en
   };
   const translations = locales[language];
-  console.log(translations)
 
   // t fonkisyonu varsayılan olarak string dönsün ama farklı degerlerde dönebilir. generic type
   const t = <T = string>(path: string): T => {

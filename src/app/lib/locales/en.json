@@ -6,30 +6,27 @@
     "portfolio": "Portfolio",
     "blog": "Blog",
     "contact": "Contact",
-    "logo": "CAKIR",
+    "logo": "ecakir.dev",
     "services": "Services"
   },
 
   "hero": {
     "title1": "SOFTWARE",
     "title2": "DEVELOPER",
-    "description": "I'm the founder of Frenify. A professional UI/UX designer and web developer based in London. Occasionally working as a freelancer.",
-    "signature": "Felicia Amor",
+    "description": "I develop modern web projects that combine design and technology, focusing on user experience and performance.",
+    "signature": "Erkan CAKIR",
     "image": "/pic.avif"
   },
 
   "biography": {
     "title": "BIOGRAPHY",
-    "description": "I’m a freelance front-end developer with over 12 years of experience. Based in London, UK. I code and create web elements for amazing people around the world. I love working with new people — every new person means a new experience.",
+    "description": "I design and build scalable, user-centered systems using modern web technologies. My focus is on creating efficient, clean, and sustainable solutions where code meets aesthetics. I’m passionate about continuous learning and improving with every project I take on.",
     "infoData": [
-      { "label": "Name", "value": "Felicia Amor" },
-      { "label": "Birthday", "value": "June 14, 1992" },
-      { "label": "Age", "value": "29" },
-      { "label": "Address", "value": "London, United Kingdom" },
-      { "label": "Phone", "value": "(+1) 7785 355 344" },
-      { "label": "Skype", "value": "Felicia.A" },
-      { "label": "Email", "value": "felicia@domainname.com" },
-      { "label": "Telegram", "value": "@feliciaamor" }
+      { "label": "Name", "value": "Erkan Mustafa CAKIR" },
+      { "label": "Birthday", "value": "April 21" },
+      { "label": "Address", "value": "Istanbul" },
+      { "label": "Phone", "value": "(+90) 000 00 00" },
+      { "label": "Email", "value": "erknm.ckr@gmail.com" }
     ]
   },
 
@@ -42,43 +39,25 @@
 
     "experience": [
       {
-        "company": "Frenify LLC",
-        "period": "2018 — Present",
-        "title": "Senior Front-end Engineer",
-        "description": "Developing interactive web interfaces using modern UI technologies, creating design systems, and ensuring performance optimization."
+        "company": "Midas Giftware",
+        "period": "August 2023 — Present",
+        "title": "Full Stack Developer",
+        "description": "I develop comprehensive web systems including production tracking, leave management, and data analysis modules to enhance the company’s operational efficiency. Within a Next.js and Express.js architecture, I’ve implemented secure, scalable, and sustainable solutions using Redux, JWT, and MSSQL. I modularized the codebase to ensure a strong integration between the user interface, API layer, and database. I also played an active role in developing kiosk screens, real-time tracking panels, and management dashboards."
       },
       {
-        "company": "Google LLC",
-        "period": "2016 — 2018",
-        "title": "Front-end Developer",
-        "description": "Worked in the Google Ads team to build reusable components and user-friendly interfaces."
-      },
-      {
-        "company": "Twitter LLC",
-        "period": "2011 — 2016",
-        "title": "Graphic Designer",
-        "description": "Created visual designs, brand identity, and UI concepts for social media campaigns."
+        "company": "Freelance",
+        "period": "2023 — Present",
+        "title": "Frontend Developer",
+        "description": "I built corporate websites, showcase pages, and SEO-optimized interfaces. Using Next.js, React, and Tailwind CSS, I created responsive, fast, and visually appealing user experiences. I managed the full process from design to deployment, tailoring each project to client needs."
       }
     ],
 
     "education": [
       {
-        "school": "Frenify University",
-        "period": "2014 — 2017",
-        "title": "Computer Science",
-        "description": "Specialized in web technologies, software engineering, and modern frameworks."
-      },
-      {
-        "school": "Edu University",
-        "period": "2011 — 2014",
-        "title": "Master’s Degree",
-        "description": "Thesis focused on user experience design and front-end development."
-      },
-      {
-        "school": "Columbia College",
-        "period": "2007 — 2011",
-        "title": "Bachelor’s Degree",
-        "description": "Fundamentals of computer engineering and software development."
+        "school": "Sakarya University",
+        "period": "2017 — 2021",
+        "title": "B.Sc. in Metallurgical and Materials Engineering",
+        "description": "During my engineering studies, I developed strong analytical thinking, problem-solving, and process optimization skills. After graduation, I redirected my career toward software development, focusing on modern web technologies."
       }
     ],
 
@@ -90,151 +69,175 @@
         },
         {
           "skill": "JavaScript / TypeScript",
-          "percent": 80
+          "percent": 85
         },
         {
           "skill": "React.js / Next.js",
-          "percent": 80
+          "percent": 90
         },
         {
           "skill": "Node.js / Express.js / NestJS",
-          "percent": 80
+          "percent": 70
         },
         {
-          "skill": "PostgreSQL / MySQL / Prisma / TypeORM",
-          "percent": 60
-        },
-        {
-          "skill": "Git / GitHub / CI-CD",
-          "percent": 85
+          "skill": "PostgreSQL / MSSQL / TypeORM / Sequelize",
+          "percent": 70
         },
         {
           "skill": "Docker / Microservices / RabbitMQ",
           "percent": 60
+        },
+        {
+          "skill": "Git / GitHub / CI-CD / Vercel",
+          "percent": 85
         }
       ],
-      "summary": "A freelance creative designer with a passion for minimal design, clean typography, and well-written code. Providing high-quality and cost-effective web and software development services."
+      "summary": "I develop user-focused, performant, and scalable applications using modern web technologies. I specialize in frontend development while focusing on microservice architecture and NestJS for backend systems."
     },
-    "summary": "A freelance creative designer with a love for minimal design."
+
+    "summary": "I’m a software developer focused on minimal and functional design, creating user-centered experiences with modern web technologies."
   },
 
   "portfolio": {
     "title": "PORTFOLIO",
-    "description": "Currently, I’m working on a professional, visually sophisticated, technologically proficient, responsive, and multi-functional web theme. If you’re interested in working with me, click the button below and let’s talk about your project.",
-    "button": "If You’re Interested, Get in Touch With Me",
+    "description": "I’m currently working on user-centered and scalable web projects developed with modern technologies. By combining design, performance, and sustainable architecture, I create unique digital experiences for brands. If you'd like to collaborate or discuss your project, feel free to contact me using the button below.",
+    "button": "Interested? Get in Touch",
     "projects": [
       {
-        "title": "Smashing Magazine Print",
-        "subtitle": "illustration, design",
-        "image": "/pic.avif",
+        "title": "MES (Manufacturing Execution System)",
+        "subtitle": "Production Tracking and Kiosk Platform",
+        "image": "/projects/mes/img1.png",
         "type": "fullstack",
-        "status": "finished"
+        "status": "completed",
+        "description": "I developed a modular MES platform that includes work order tracking, machine-based production recording, leave and shift management modules. Using Next.js, Express.js, Tailwind CSS, and MSSQL, I designed end-to-end UI and backend services. The system improved production visibility, eliminated paper-based tracking, and enabled real-time management for operators, managers, and quality teams.",
+        "tech": ["Next.js", "React", "Express.js", "Tailwind CSS", "MSSQL"]
       },
       {
-        "title": "Revolution Book",
-        "subtitle": "illustration, design",
-        "image": "/pic.avif",
+        "title": "Production Analytics & AI-Powered Dashboard",
+        "subtitle": "Data Analytics and Monitoring System",
+        "image": "/projects/analytics/img2.png",
         "type": "fullstack",
-        "status": "finished"
+        "status": "completed",
+        "description": "A comprehensive production analysis and monitoring panel built with React, Next.js, Tailwind CSS, and Express.js. The system visualizes machine-based production data for real-time workflow tracking. A dynamic filtering module allows users to update performance metrics instantly. The integrated AI Assistant Panel provides rapid analysis and insights based on system data, enhancing user experience.",
+        "tech": [
+          "Next.js",
+          "React",
+          "Express.js",
+          "Tailwind CSS",
+          "MSSQL",
+          "RESTful API"
+        ]
       },
       {
-        "title": "Dreamers Logo",
-        "subtitle": "illustration, design",
-        "image": "/pic.avif",
-        "type": "fullstack",
-        "status": "finished"
+        "title": "WAWA Interiors Website",
+        "subtitle": "Pixel-Perfect Implementation from Figma to Next.js",
+        "image": "/projects/wawa/wawa.png",
+        "type": "frontend",
+        "status": "completed",
+        "description": "I developed a modern, responsive website for WAWA Interiors. I transformed a detailed Figma design into a pixel-perfect, high-performance layout using Next.js and Tailwind CSS. The code structure was designed to be modular and scalable, prioritizing browser compatibility, accessibility, and performance optimization. This project demonstrates my ability to turn design files into production-quality web experiences.",
+        "tech": [
+          "Next.js",
+          "Tailwind CSS",
+          "Figma",
+          "Responsive Design",
+          "Performance Optimization"
+        ]
       },
       {
-        "title": "Modern Workspace",
-        "subtitle": "branding, ui/ux",
-        "image": "/pic.avif",
-        "type": "fullstack",
-        "status": "finished"
+        "title": "Real Engineering Corporate Website",
+        "subtitle": "Periodic Inspection & Measurement Services",
+        "image": "/projects/real/real.png",
+        "type": "wordpress",
+        "status": "completed",
+        "description": "I built a corporate website for Real Engineering that reflects their brand identity. The WordPress-based project was optimized for performance, SEO, and a user-friendly admin panel. Through theme customization and modular integrations, I provided dynamic content management tailored to the company’s needs. This project highlights my experience in professional WordPress-based solutions and design implementation.",
+        "tech": [
+          "WordPress",
+          "Elementor",
+          "Responsive Design",
+          "SEO Optimization",
+          "Theme Customization"
+        ]
+      },
+      {
+        "title": "Şahinlife Construction Web Platform",
+        "subtitle": "Corporate Construction and Project Showcase Website",
+        "image": "/projects/sah/sahin.png",
+        "type": "NextJS",
+        "status": "completed",
+        "description": "I developed a modern and reliable corporate web platform for Şahinlife Construction. The UI was built with Next.js and Tailwind CSS for simplicity, mobile responsiveness, and performance. On the backend, I used NestJS for dynamic content management, contact form handling, and secure data flow. The project serves as a complete end-to-end solution combining a modern frontend with a robust backend architecture.",
+        "tech": [
+          "Next.js",
+          "NestJS",
+          "Tailwind CSS",
+          "TypeScript",
+          "Responsive Design"
+        ]
       }
     ]
   },
 
   "services": {
     "title": "SERVICES",
-    "description": "I help ambitious businesses like yours generate more profit by building awareness, driving web traffic, connecting with customers, and growing overall sales. My only rule — I never work through agencies; I prefer direct communication with clients.",
+    "description": "I develop powerful, scalable, and user-oriented digital solutions using modern web technologies. From design to backend architecture, performance, security, and sustainability are always my priorities. I work directly with businesses to deliver custom software solutions tailored to their needs.",
     "cards": [
       {
         "id": 1,
-        "title": "Web & Product Design",
-        "description": "From low-fidelity wireframes and prototypes to final coded designs. We don’t just deliver static visuals; we love working directly in the browser (♥ CSS) and tools like Figma. Using modern frameworks, we collaborate with developers to deliver complete digital experiences.",
-        "price": "$500",
-        "highlight": ["CSS", "Figma", "Responsive", "Statamic", "Kirby"]
+        "title": "Full Stack Web Development",
+        "description": "I develop performant, scalable, and secure web applications using Next.js, NestJS, and TypeScript. I design and integrate the frontend, backend, and database structures end-to-end for each project.",
+        "price": "₺",
+        "highlight": ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "RESTful API"]
       },
       {
         "id": 2,
-        "title": "Brand Identity",
-        "description": "From a single logo to a complete branding system. We believe in refining and updating existing logos to enhance effectiveness without losing brand equity. Each identity project is crafted to reflect your unique story.",
-        "price": "$450",
-        "highlight": ["Logo Design", "Brand Guidelines", "Visual System"]
+        "title": "Frontend Design & Development",
+        "description": "I turn Figma designs into pixel-perfect, responsive, and performance-oriented user interfaces. Using Tailwind CSS, Shadcn UI, and modern React frameworks, I deliver aesthetic and fast user experiences.",
+        "price": "₺",
+        "highlight": [
+          "Next.js",
+          "Tailwind",
+          "Shadcn UI",
+          "Responsive",
+          "Pixel Perfect"
+        ]
       },
       {
         "id": 3,
-        "title": "Iconography",
-        "description": "We create custom icon sets that match your product’s personality and tone. Icons are hand-crafted for pixel perfection and optimized for web and mobile applications.",
-        "price": "$200",
-        "highlight": ["SVG", "Pixel Perfect", "Vector Icons"]
+        "title": "AI-Integrated Automations",
+        "description": "I integrate OpenAI and similar APIs to make automation processes smarter. I add AI-powered features to SaaS products for image generation, text analysis, data processing, and decision support systems—reducing manual tasks and improving both user experience and efficiency.",
+        "price": "₺",
+        "highlight": ["AI API", "OpenAI", "Automation", "Pipeline"]
       },
       {
         "id": 4,
-        "title": "UI/UX Consulting",
-        "description": "We audit your existing website or product and provide actionable recommendations for usability, accessibility, and conversion optimization. Ideal for startups looking to improve user experience.",
-        "price": "$350",
-        "highlight": ["Usability", "Accessibility", "Wireframes"]
+        "title": "Corporate Dashboards & Analytics Systems",
+        "description": "I build dynamic dashboards that visualize production, sales, or operational data. With real-time data flow, filtering, and user-based reporting features, I deliver complete analytical control to businesses.",
+        "price": "₺",
+        "highlight": [
+          "React",
+          "Chart Libraries",
+          "Express.js",
+          "MSSQL",
+          "Data Visualization"
+        ]
       },
       {
         "id": 5,
-        "title": "Landing Page Development",
-        "description": "High-converting, SEO-friendly landing pages built with Next.js and Tailwind CSS. Optimized for performance, analytics, and responsive design.",
-        "price": "$600",
-        "highlight": ["Next.js", "Tailwind", "SEO", "Analytics"]
-      },
-      {
-        "id": 6,
-        "title": "E-commerce Design",
-        "description": "We design and develop Shopify or WooCommerce stores that are visually appealing, fast, and optimized for sales. Includes custom themes and checkout experiences.",
-        "price": "$850",
-        "highlight": ["Shopify", "WooCommerce", "Checkout UX"]
+        "title": "Landing Page & Portfolio Development",
+        "description": "I build high-converting, SEO-friendly landing pages and personal portfolio sites for brands and individuals. Each project is fully optimized for design, content, and performance.",
+        "price": "₺",
+        "highlight": ["Next.js", "Tailwind", "SEO", "Analytics", "Vercel"]
       }
     ]
   },
 
   "blog": {
-    "title": "NEWS & TIPS",
+    "title": "NEWS & INSIGHTS",
     "button": "Continue Reading",
-    "description": "Stay up to date with insights about design, creativity, and technology. Explore stories and ideas that inspire modern web experiences.",
+    "description": "Stay updated with insights on design, creativity, and technology. Discover stories and ideas that inspire modern web experiences.",
     "posts": [
       {
-        "id": 1,
-        "title": "What You Know About Design & What You Don’t.",
-        "date": "September 25, 2021",
-        "image": "/pic.avif"
-      },
-      {
-        "id": 2,
-        "title": "Top 10 UI/UX Trends That Will Shape Web Design in 2025.",
-        "date": "August 14, 2021",
-        "image": "/pic.avif"
-      },
-      {
-        "id": 3,
-        "title": "How Minimalism Shapes Modern Brand Identities.",
-        "date": "July 02, 2021",
-        "image": "/pic.avif"
-      },
-      {
-        "id": 4,
-        "title": "Why Developers Should Understand Design Principles.",
-        "date": "June 18, 2021",
-        "image": "/pic.avif"
-      },
-      {
         "id": 5,
-        "title": "Building a Portfolio That Stands Out in 2025.",
+        "title": "How to Build a Standout Portfolio in 2025?",
         "date": "May 10, 2021",
         "image": "/pic.avif"
       }
@@ -243,13 +246,15 @@
 
   "contact": {
     "title": "CONTACT",
-    "description": "I help ambitious businesses like yours generate more profits by building awareness, driving traffic, connecting with customers, and increasing overall sales. My only rule — I don’t work through agencies; I prefer direct communication with clients.",
+    "description": "I develop modern and scalable web solutions for businesses and entrepreneurs. Every project is tailored to your needs and managed through direct communication. I listen to your ideas, handle the technical process transparently, and deliver measurable, sustainable results.",
     "form": {
       "name": "Name *",
       "email": "Email *",
       "phone": "Phone",
-      "message": "Message",
-      "button": "Send Message"
+      "message": "Your Message",
+      "button": "Send Message",
+      "success": "Your message has been sent successfully!",
+      "error": "There was an error sending your message. Please try again."
     },
     "addressSection": {
       "addressLabel": "Address",

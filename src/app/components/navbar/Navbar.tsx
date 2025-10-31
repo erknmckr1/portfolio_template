@@ -1,11 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "@/app/lib/hooks/useTranslation";
 import {
   Twitter,
-  Facebook,
   Instagram,
-  Youtube,
+  GithubIcon,
   ArrowLeft,
   ArrowRight,
   Home,
@@ -17,6 +16,7 @@ import {
   Menu,
   X,
   Globe,
+  LinkedinIcon,
 } from "lucide-react";
 import { toggleSidebar } from "@/app/lib/redux/slices/sidebar.slice";
 import { setChangeLanguage } from "@/app/lib/redux/slices/language.slice";
@@ -30,7 +30,7 @@ function Navbar() {
   const { t } = useTranslation();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const [activeHash, setActiveHash] = useState("");
   const handleChangeStatusNavbar = () => dispatch(toggleSidebar());
   const handleToggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
@@ -38,14 +38,55 @@ function Navbar() {
   const handleToggleLanguage = () => {
     const newLang = language === "en" ? "tr" : "en";
     dispatch(setChangeLanguage(newLang));
+    console.log("x");
+    localStorage.setItem("preffereLanguage", newLang);
   };
+
+  useEffect(() => {
+    const update = () => setActiveHash(window.location.hash || "#hero");
+    window.addEventListener("hashchange", update);
+    update(); // initial
+    return () => window.removeEventListener("hashchange", update);
+  }, []);
+
+  // Sayfa yüklendiğinde kaydedilen dili al
+  useEffect(() => {
+    const savedLang = localStorage.getItem("preffereLanguage");
+    console.log(savedLang);
+    if (savedLang && savedLang !== language) {
+      dispatch(setChangeLanguage(savedLang));
+    }
+  }, [dispatch, language]);
+
+  const socialLinks = [
+    {
+      name: "Github",
+      href: "https://github.com/erknmckr1",
+      icon: GithubIcon,
+    },
+    {
+      name: "Linledin",
+      href: "https://linkedin.com/in/erkan-mustafa-cakır",
+      icon: LinkedinIcon,
+    },
+    {
+      name: "Twitter",
+      href: "https://x.com/erknmckr",
+      icon: Twitter,
+    },
+    {
+      name: "Instagram",
+      href: "https://instagram.com/erknmckr1",
+      icon: Instagram,
+    },
+  ];
 
   return (
     <>
       {/* === DESKTOP SIDEBAR === */}
       <aside
-        className={`hidden fixed left-0 top-0 h-full border-r-[6px] border-black bg-white lg:flex flex-col justify-between py-26 transition-all duration-500 ease-in-out ${
-          isOpen ? "w-[400px] px-8" : "w-[100px] px-0 py-0"
+        className={`hidden font-signature fixed left-0 top-0 h-full  border-r-4 border-black bg-white lg:flex flex-col justify-between py-26 transition-all duration-500 ease-in-out ${
+          isOpen ? "w-[380px] px-8" : "w-[100px] px-0 py-0"
         }`}
       >
         {/* Toggle Button */}
@@ -59,10 +100,7 @@ function Navbar() {
         {/* Logo */}
         <div className="flex justify-center mb-16">
           {isOpen && (
-            <h1
-              className="text-6xl text-black font-black tracking-tight"
-              style={{ fontFamily: "Oswald, sans-serif" }}
-            >
+            <h1 className="text-5xl text-black font-black tracking-tight">
               <span className="inline-block border-b-[6px] border-black pb-1">
                 {t("navbar.logo")}
               </span>
@@ -73,7 +111,7 @@ function Navbar() {
         {/* Menu */}
         <nav className="flex flex-col gap-y-1 mt-10 space-y-0 flex-1">
           {[
-            { name: t("navbar.home"), icon: Home, href: "#hero", active: true },
+            { name: t("navbar.home"), icon: Home, href: "#hero"},
             { name: t("navbar.biography"), icon: User, href: "#biography" },
             { name: t("navbar.portfolio"), href: "#portfolio", icon: Settings },
             { name: t("navbar.services"), icon: Users, href: "#services" },
@@ -83,8 +121,8 @@ function Navbar() {
             <a
               key={i}
               href={item.href}
-              className={`px-6 py-3 gap-x-4 text-center flex items-center text-xl font-bold tracking-wide transition-all duration-200 ${
-                item.active
+              className={`px-6 py-3 gap-x-4 text-center flex items-center text-lg font-bold tracking-wide transition-all duration-200 ${
+                activeHash === item.href
                   ? "bg-black text-white"
                   : "text-black hover:bg-black hover:text-white"
               }`}
@@ -99,7 +137,7 @@ function Navbar() {
         <div className="flex flex-col items-center space-y-6">
           <div className="w-full border-t-[5px] border-black" />
 
-          {/* 🌐 Language Toggle */}
+          {/*  Language Toggle */}
           {isOpen && (
             <button
               onClick={handleToggleLanguage}
@@ -113,10 +151,10 @@ function Navbar() {
           {isOpen && (
             <>
               <div className="flex justify-center space-x-3 pt-10">
-                {[Twitter, Facebook, Instagram, Youtube].map((Icon, idx) => (
+                {socialLinks.map(({ name, href, icon: Icon }) => (
                   <a
-                    key={idx}
-                    href="#"
+                    key={name}
+                    href={href}
                     className="w-14 h-14 border-3 border-black flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200 cursor-pointer group"
                   >
                     <Icon
@@ -127,22 +165,17 @@ function Navbar() {
                   </a>
                 ))}
               </div>
-              <div className="text-center text-sm text-black leading-tight mt-4">
-                <p>© 2025 Rewall Template</p>
-                <p>Created by Frenify</p>
-              </div>
             </>
           )}
         </div>
       </aside>
 
       {/* === MOBILE NAVBAR === */}
-      <aside className="lg:hidden fixed top-0 left-0 w-full bg-black z-50 shadow-lg">
+      <aside className="lg:hidden font-signature  fixed top-0 left-0 w-full bg-black z-50 shadow-lg">
         <div className="flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <h1
             className="text-2xl font-extrabold tracking-widest text-white"
-            style={{ fontFamily: "Oswald, sans-serif" }}
           >
             <span className="border-b-4 border-white pb-1">
               {t("navbar.logo")}
@@ -153,7 +186,7 @@ function Navbar() {
             {/*  Language Toggle */}
             <button
               onClick={handleToggleLanguage}
-              className="flex items-center justify-center w-10 h-10 border-2 border-white rounded-full text-white hover:bg-white hover:text-black transition-all duration-300"
+              className="flex items-center justify-center w-14 h-10  text-white hover:bg-white hover:text-black transition-all duration-300"
             >
               <Globe size={18} />
               <span className="ml-1 text-sm font-semibold">
@@ -193,7 +226,7 @@ function Navbar() {
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className={`flex items-center gap-x-4 px-6 py-2 text-lg font-semibold transition-all duration-200 ${
-                item.active
+                activeHash === item.href
                   ? "bg-black text-white"
                   : "hover:bg-black hover:text-white"
               }`}
@@ -205,10 +238,10 @@ function Navbar() {
 
           {/* Socials */}
           <div className="flex justify-center space-x-4 border-t border-black pt-4 mt-4">
-            {[Twitter, Facebook, Instagram, Youtube].map((Icon, idx) => (
+            {socialLinks.map(({ name, href, icon: Icon }) => (
               <a
-                key={idx}
-                href="#"
+                key={name}
+                href={href}
                 aria-label="social"
                 className="w-10 h-10 border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200"
               >

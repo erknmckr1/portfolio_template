@@ -22,7 +22,7 @@ function ClientLayout({ children }: { children: React.ReactNode }) {
         ${isMobile
           ? 'w-full ml-0'
           : isOpen
-          ? 'w-[calc(100%-400px)] ml-[400px]'
+          ? 'w-[calc(100%-400px)] ml-[380px]'
           : 'w-[calc(100%-100px)] ml-[100px]'
         }
       `}

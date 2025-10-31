@@ -1,8 +1,6 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "../lib/hooks/useTranslation";
-// 👆 senin dosya yapına göre path değişebilir
 
 function Hero() {
   const { t } = useTranslation();
@@ -47,11 +45,19 @@ function Hero() {
     },
   };
 
-  // 🔸 JSON'dan gelen title'ı harf harf bölüyoruz
+  //  JSON'dan gelen title'ı harf harf bölüyoruz
   const renderWord = (word: string) => (
-    <motion.span variants={wordContainer} className="block overflow-hidden" key={word}>
+    <motion.span
+      variants={wordContainer}
+      className="block overflow-hidden"
+      key={word}
+    >
       {word.split("").map((char, i) => (
-        <motion.span key={i} variants={charItem} className="inline-block mr-0.5">
+        <motion.span
+          key={i}
+          variants={charItem}
+          className="inline-block mr-0.5"
+        >
           {char}
         </motion.span>
       ))}
@@ -77,7 +83,7 @@ function Hero() {
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.4 }}
-            className="absolute -left-8 top-[15%] w-[660px] h-[70%] bg-teal-600 z-0"
+            className="absolute -left-8 top-[15%]  xl:w-[400px] 2xl:w-[660px] h-[70%] bg-teal-600 z-0"
           ></motion.div>
 
           <div className="relative bg-white border border-black shadow-xl">
@@ -94,49 +100,53 @@ function Hero() {
             </div>
           </div>
         </motion.div>
-
         {/* Sağ Bilgi Alanı */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
-          className="space-y-4 lg:space-y-6 max-w-xl px-4 lg:px-0"
-        >
-          <h1
-            className="text-[3rem] lg:text-[4.5rem] font-black leading-[0.95] tracking-tight"
-            style={{ fontFamily: "serif" }}
-          >
-            {renderWord(t("hero.title1"))}
-            <motion.span variants={textVariants} className="block mt-1">
-              {t("hero.title2")}
-            </motion.span>
-          </h1>
-
+        <div className="flex justify-center items-center">
           <motion.div
-            variants={textVariants}
-            transition={{ delay: 0.4 }}
-            className="w-1/2 h-4 lg:h-6 bg-black mt-4 lg:mt-6 mb-6 lg:mb-8"
-          ></motion.div>
-
-          <motion.p
-            variants={textVariants}
-            transition={{ delay: 0.5 }}
-            className="text-base lg:text-lg leading-relaxed text-gray-800"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.4 }}
+            className="space-y-4 sm:space-y-5 md:space-y-6 max-w-xl px-2 sm:px-4 lg:px-0 text-center lg:text-left"
           >
-            {t("hero.description")}
-          </motion.p>
+            <h1
+              className="text-[2.2rem] sm:text-[2.8rem] md:text-[3.4rem] lg:text-[4.3rem] font-black leading-tight lg:leading-[0.95] tracking-tight"
+              style={{ fontFamily: "serif" }}
+            >
+              {renderWord(t("hero.title1"))}
+              <motion.span variants={textVariants} className="block mt-1">
+                {t("hero.title2")}
+              </motion.span>
+            </h1>
 
-          <motion.div
-            variants={textVariants}
-            transition={{ delay: 0.6 }}
-            className="pt-6 lg:pt-8"
-          >
-            <p className="text-3xl lg:text-4xl" style={{ fontFamily: "Brush Script MT, cursive" }}>
-              {t("hero.signature")}
-            </p>
+            <motion.div
+              variants={textVariants}
+              transition={{ delay: 0.4 }}
+              className="mx-auto lg:mx-0 w-[40%] sm:w-[45%] md:w-[50%] lg:w-1/2 h-[3px] sm:h-1 lg:h-1.5 bg-black mt-4 mb-5 lg:my-6"
+            ></motion.div>
+
+            <motion.p
+              variants={textVariants}
+              transition={{ delay: 0.5 }}
+              className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-800 px-2 sm:px-0"
+            >
+              {t("hero.description")}
+            </motion.p>
+
+            <motion.div
+              variants={textVariants}
+              transition={{ delay: 0.6 }}
+              className="pt-4 sm:pt-6 md:pt-8"
+            >
+              <p
+                className="text-2xl sm:text-3xl md:text-4xl"
+                style={{ fontFamily: "Brush Script MT, cursive" }}
+              >
+                {t("hero.signature")}
+              </p>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

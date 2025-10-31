@@ -5,6 +5,10 @@
   --foreground: #171717;
 }
 
+.font-signature {
+  font-family: "Great Vibes", cursive;
+}
+
 html {
   scroll-behavior: smooth;
 }
