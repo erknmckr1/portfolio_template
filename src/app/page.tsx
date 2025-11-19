@@ -5,7 +5,9 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Services from "./components/services/Services";
 import Contact from "./components/contact/Contact";
 import BlogWrapper from "./components/blog/BlogWrapper";
-export default function Home() {
+import { getAllPosts } from "./lib/get-all-posts";
+export default async function Home() {
+  const posts = await getAllPosts();
   return (
     <div className="">
       <Hero />
@@ -16,7 +18,7 @@ export default function Home() {
       <Divider />
       <Services />
       <Divider />
-      <BlogWrapper />
+      <BlogWrapper blog={posts} />
       <Divider />
       <Contact />
     </div>

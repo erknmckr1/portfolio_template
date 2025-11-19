@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 import TitleArea from "../TitleArea";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslation } from "@/app/lib/hooks/useTranslation";
-function BlogWrapper() {
+import { PostMeta } from "@/app/lib/get-all-posts";
+function BlogWrapper({ blog }: { blog: PostMeta[] }) {
   const { t } = useTranslation();
 
   const containerVariants = {
@@ -25,11 +27,9 @@ function BlogWrapper() {
     },
   };
 
-  const blogPosts =
-    t<{ id: number; title: string; date: string; image: string }[]>("blog.posts");
 
   return (
-    <div id="blog" className="max-w-6xl mx-auto py-24 px-4">
+    <div id="blog" className="max-w-7xl mx-auto py-24 px-4">
       {/* Başlık alanı */}
       <TitleArea title={t("blog.title")} description={t("blog.description")} />
 
@@ -41,16 +41,16 @@ function BlogWrapper() {
         viewport={{ once: true, amount: 0.2 }}
         className="pt-20 space-y-10"
       >
-        {blogPosts.map((item) => (
+        {blog.map((item) => (
           <motion.div
             variants={cardVariants}
-            key={item.id}
+            key={item.slug}
             className="flex  items-start gap-6 lg:gap-16"
           >
             {/* Görsel */}
             <div className="relative w-full lg:w-1/2 overflow-hidden">
               <Image
-                src={item.image}
+                src={"/pic.avif"}
                 alt="Blog Post"
                 width={600}
                 height={400}
@@ -61,7 +61,8 @@ function BlogWrapper() {
             {/* Metin içeriği */}
             <div className="flex flex-col justify-center space-y-6 lg:w-1/2">
               <h3
-                className="text-2xl lg:text-3xl font-semibold leading-snug text-black hover:text-yellow-500 transition-colors duration-300 cursor-pointer underline underline-offset-2"
+              
+                className="sm:text-2xl lg:text-3xl font-semibold leading-snug text-black hover:text-yellow-500 transition-colors duration-300 cursor-pointer underline underline-offset-2"
                 style={{ fontFamily: "serif" }}
               >
                 {item.title}
@@ -69,9 +70,9 @@ function BlogWrapper() {
 
               <p className="text-gray-700 text-base">{item.date}</p>
 
-              <button className="px-8 py-3 hidden lg:block bg-yellow-400 hover:bg-yellow-500 text-black font-semibold uppercase tracking-wide transition-colors duration-300 shadow-md w-fit">
-              {t("blog.button")}
-              </button>
+              <Link href={`/blog/${item.slug}`} className="lg:px-8 lg:py-3 text-sm p-2 lg:text-lg  bg-yellow-400 hover:bg-yellow-500 text-black font-semibold uppercase tracking-wide transition-colors duration-300 shadow-md w-fit">
+                {t("blog.button")}
+              </Link>
             </div>
           </motion.div>
         ))}

@@ -1,0 +1,506 @@
+---
+title: "Intersection Observer API ile Modern Görünürlük Takibi"
+description: "Scroll event'lerinin kaosuna girmeden element görünürlüğünü takip etmenin modern yolu."
+date: "2025-11-17"
+readingTime: "10 dakika"
+tags:
+  - javascript
+  - frontend
+  - web api
+---
+
+# Giriş
+
+Modern web uygulamalarında kullanıcı deneyimi artık sadece içeriği okumaktan ibaret değil. Kullanıcılar sayfayla sürekli etkileşim halinde ve her scroll hareketi yeni bir hikayeye kapı açıyor:
+
+- **Animasyonlar** sayfayı aşağı kaydırdıkça zarif bir şekilde hayat buluyor
+- **Görseller** ancak gerçekten görüntülenecekleri anda yükleniyor (lazy loading)
+- **Sonsuz liste** (infinite scroll) ile yeni içerikler otomatik olarak akışa dahil oluyor
+- **Analitik veriler** için hangi içeriklerin gerçekten görüntülendiğini takip ediyoruz
+
+Tüm bu özelliklerin ortak bir sorusu var: **"Bu element tam olarak ne zaman kullanıcının ekranına girdi?"**
+
+Bu basit gibi görünen soru, aslında modern web uygulamalarının temel taşlarından birini oluşturuyor. Peki bu soruya cevap bulmak her zaman bu kadar kolay mıydı?
+
+## Eskiden "Element Görünüyor mu?" Nasıl Kontrol Ediyorduk?
+
+Intersection Observer API gelmeden önceki dönemlere bir göz atalım. O zamanlar, bir elementin ekranda görünür olup olmadığını anlamak için oldukça zahmetli bir süreç izliyorduk:
+
+**Adım 1:** Scroll event'ini dinle
+
+**Adım 2:** Her kaydırmada elementin konumunu hesapla
+
+**Adım 3:** Manuel olarak "görünür mü?" kontrolü yap
+
+Tarayıcının bize "element görünür oldu" diye bir sinyal vermesi gibi bir lüksümüz yoktu. Her şeyi kendimiz manuel olarak yapmak zorundaydık.
+
+**Adım 1: Scroll Event'ini Dinlemek**
+
+```tsx
+window.addEventListener("scroll", handleScroll);
+```
+
+İşte ilk sorun burada başlıyordu. Bu event listener her scroll hareketinde tetikleniyor. Kullanıcı hızlıca kaydırdığında? Saniyede **yüzlerce kez** fonksiyon çağrılıyordu. Bu tek başına ciddi bir performans maliyeti demekti.
+
+**Adım 2: Elementin Konumunu Manuel Hesaplamak**
+
+```tsx
+const rect = element.getBoundingClientRect();
+```
+
+Bu method elementin viewport'a göre pozisyonunu hesaplıyor ve şöyle bir sonuç döndürüyordu:
+
+```tsx
+{
+  top: 850,
+  bottom: 900,
+  height: 50,
+  left: 50,
+  width: 200
+}
+```
+
+`getBoundingClientRect()` çağrısı her seferinde tarayıcının layout hesaplaması yapmasını gerektiriyor. Bu da tek başına maliyetli bir işlem. Şimdi bunu her scroll'da, belki de onlarca element için yaptığınızı düşünün...
+
+**Adım 3:  "Görünüyor mu?" Kontrolünü Kendimiz Yapmak**
+
+Elde ettiğimiz pozisyon bilgisiyle viewport yüksekliğini karşılaştırıp manuel kontrol yapıyorduk:
+
+```tsx
+function isElementVisible(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top < window.innerHeight &&  
+    rect.bottom >= 0 &&
+    rect.left < window.innerWidth && 
+    rect.right >= 0
+  );
+}
+```
+
+**Mantık basit görünüyor:** Elementin üst kısmı viewport'un altında mı? Alt kısmı viewport'un üstünde mi? O halde element görünür demektir! Ama bu kontrol tek element için bile karmaşıkken, 20-30 element için düşündüğünüzde çok fazla hesaplama, çok fazla koşul kontrolü ve çok fazla event tetiklenmesi birikip **ciddi performans sorunlarına** yol açıyordu.
+
+### Bu Yöntemin Sorunları
+
+### Sürekli Çalışan Event Dinleyicisi Sorunu
+
+Scroll event'inin en büyük problemi, 100 milisaniye içinde onlarca kez tetiklenebilmesidir. Kullanıcı sayfada gezinirken her küçük kaydırmada fonksiyonlar çalışmaya başlar. Bu durum tarayıcının sürekli olarak aynı işlemleri tekrarlaması anlamına gelir. Tarayıcı adeta nefes alamaz hale gelir çünkü bir hesaplama bitmeden diğeri başlar. Özellikle hızlı scroll hareketlerinde bu sorun daha da belirginleşir ve kullanıcı deneyimini olumsuz etkileyen donmalar, takılmalar ortaya çıkar.
+
+### Pozisyon Hesaplamasının Maliyeti
+
+`getBoundingClientRect()` metodunun her çağrılışı, tarayıcının layout hesaplaması yapmasını gerektirir. Bu işlem, elementin tam konumunu, boyutlarını ve viewport'a göre pozisyonunu hesaplamak için sayfa üzerinde ölçümler yapar. Tek başına çok maliyetli olmasa da, scroll event'i ile birleştiğinde sürekli tekrarlanan bu hesaplamalar ciddi kaynaklar tüketir. Tarayıcı her seferinde "bu element nerede?" sorusunu yanıtlamak için DOM ağacını tarar, hesaplamalar yapar ve sonuç döndürür. Bu süreç saniyede yüzlerce kez tekrarlandığında performans düşüşü kaçınılmaz olur.
+
+### Çoklu Element İzlemenin Yaratığı Kâbus
+
+Tek bir elementi izlemek bile sorunluyken, birden fazla elementi takip etmek durumu tamamen başka bir boyuta taşır. Ekranda animasyon bekleyen 30 kutu olduğunu düşünün. Her scroll event'inde 30 elementi kontrol etmeniz gerekir. Bu da 30 kez `getBoundingClientRect()` çağrısı, 30 kez koşul kontrolü demektir. Kullanıcı sayfayı hızlıca kaydırdığında saniyede yüzlerce scroll event tetiklenir.
+
+### Gerçek Dünya Senaryosu
+
+Bir e-ticaret sitesi düşünün: Ana sayfada 50 ürün kartı var ve her biri görünür olduğunda animasyon yapacak. Geleneksel yöntemle:
+
+```tsx
+let productsToAnimate = document.querySelectorAll('.product-card');
+
+window.addEventListener('scroll', function() {
+  // Her scroll'da 50 element kontrol ediliyor!
+  productsToAnimate.forEach(product => {
+    const rect = product.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      product.classList.add('animate');
+    }
+  });
+});
+```
+
+Kullanıcı sayfayı hızlıca kaydırdığında bu kod **saniyede binlerce kez** çalışabilir. Sonuç? Hantal, takılan, kullanıcı deneyimini bozan bir sayfa.
+
+Eskiden bir elementin görünür olup olmadığını anlamak için:
+
+- **Sürekli ölçüm yapan**
+- **Sürekli çalışan**
+- **Maliyetli hesaplamalar içeren**
+- **Karmaşık bir sistem** kullanmak zorundaydık.
+
+Bu yaklaşım hem kod kalitesi hem de performans açısından ciddi sorunlar yaratıyordu.
+
+---
+
+**İşte tam bu noktada devreye giren çözüm:** Modern, verimli ve son derece "akıllı" bir API: **Intersection Observer API** 
+
+# Intersection Observer API Nedir?
+
+Intersection Observer API, bir elementin viewport (görünen sayfa alanı) veya belirttiğiniz başka bir element ile **kesişimini otomatik olarak izleyen** modern bir tarayıcı API'sidir. Basitçe söylemek gerekirse: "Bu element ekrana girdi mi?" sorusuna **tarayıcının kendisi** cevap verir.
+
+Eski yöntemde **biz** sürekli "element görünür mü?" diye kontrol ediyorduk. Intersection Observer'da ise **tarayıcıya** diyoruz ki:
+
+> "Bu elementleri izle. Ekrana girdiklerinde veya çıktıklarında bana haber ver."
+> 
+
+Ve tarayıcı bunu **son derece verimli** bir şekilde yapıyor. Çünkü:
+
+- Scroll event'i dinlemiyor
+- Sürekli pozisyon hesaplamıyor
+- Sadece **gerçekten değişiklik olduğunda** sizi bilgilendiriyor
+
+```tsx
+// Eski yöntem: Sen sürekli kontrol et her scrollda görünür mü ?
+window.addEventListener('scroll', () => {
+
+});
+
+// Intersection Observer: Tarayıcı sana haber versin
+const observer = new IntersectionObserver((entries) => {
+  
+});
+```
+
+Bu yaklaşım farkı her şeyi değiştiriyor. Artık **reaktif değil, proaktif** bir sistem var. Kod yazmıyoruz, tarayıcıya talimat veriyoruz.
+
+### Ne Kazanıyoruz?
+
+**Performans:** Tarayıcı içsel optimizasyonları kullanarak izleme yapıyor. Scroll event'lerinin yarattığı kaos yok.
+
+**Basitlik:** Karmaşık pozisyon hesaplamaları, throttle/debounce gibi optimizasyonlar gerekmiyor. API her şeyi hallediyor.
+
+**Esneklik:** Sadece viewport değil, istediğiniz herhangi bir elementi referans alabilirsiniz. "Bu element, şu container içinde görünür olduğunda..." gibi senaryolar çok kolay.
+
+**Hassasiyet:** Element tam olarak ne kadar görünür olduğunu bile takip edebilirsiniz. "%50'si göründüğünde haberdar et" diyebilirsiniz.
+
+Intersection Observer API, element görünürlüğü izleme işini **bizden alıp tarayıcıya veren** modern bir çözüm. Eski yöntemin tüm sorunlarını ortadan kaldırırken, daha güçlü ve esnek bir API sunuyor.
+
+Şimdi bu API'nin nasıl çalıştığına ve nasıl kullanıldığına bakalım...
+
+---
+
+## Intersection Observer Nasıl Çalışır?
+
+Intersection Observer API'yi anlamanın en iyi yolu, üç temel bileşenine bakmaktır: **Observer** (gözlemci), **Target** (hedef) ve **Callback** (geri çağırma fonksiyonu).
+
+```tsx
+// 1. Observer oluştur
+const observer = new IntersectionObserver(callback, options);
+
+// 2. İzlenecek elementi belirle
+observer.observe(element);
+
+// 3. İzlemeyi durdur (gerektiğinde)
+observer.unobserve(element);
+
+// 4. Tüm izlemeleri kapat
+observer.disconnect();
+```
+
+Her parçayı detaylı inceleyelim.
+
+### 1. Observer Oluşturma
+
+Observer'ı oluştururken iki parametre veriyoruz:
+
+```tsx
+const observer = new IntersectionObserver(callback, options);
+```
+
+**Callback:** Element görünürlüğü değiştiğinde çalışacak fonksiyon
+
+**Options:** Observer'ın nasıl çalışacağını belirleyen ayarlar (opsiyonel)
+
+### 2. Callback Fonksiyonu
+
+Callback fonksiyonu, görünürlük değiştiğinde otomatik olarak çağrılır ve size iki parametre verir:
+
+```tsx
+const callback = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      console.log('Element ekrana girdi!');
+    } else {
+      console.log('Element ekrandan çıktı!');
+    }
+  });
+};
+```
+
+**entries:** İzlenen elementlerin durumu hakkında bilgi içeren bir dizi
+
+**observer:** Observer nesnesinin kendisi (gerektiğinde kullanılır)
+
+### 3. Entry Nesnesi
+
+Her `entry` nesnesi, izlenen bir element hakkında detaylı bilgi içerir:
+
+```tsx
+entry = {
+  target: element,              // İzlenen DOM elementi
+  isIntersecting: true,         // Element görünür mü? (true/false)
+  intersectionRatio: 0.75,      // Elementin ne kadarı görünür (0-1 arası)
+  intersectionRect: {...},      // Görünen kısmın boyutları
+  boundingClientRect: {...},    // Elementin toplam boyutları
+  rootBounds: {...},            // Viewport'un boyutları
+  time: 1234.56                 // Değişikliğin gerçekleştiği zaman
+}
+```
+
+### Özet
+
+Intersection Observer'ın çalışma mantığı şu döngüye dayanır:
+
+1. **Observer oluştur** → Nasıl izleyeceğini belirle
+2. **Element ekle** → Neyi izleyeceğini söyle
+3. **Callback tetiklenir** → Değişiklik olduğunda bilgilendirilirsin
+4. **İşlem yap** → Animasyon, yükleme, veri çekme, vs.
+5. **Temizle** → İhtiyaç kalmadığında observer'ı kapat
+
+Şimdi bu basit yapının üzerine nasıl daha gelişmiş özellikler ekleyebileceğimize bakalım...
+
+---
+
+## API Detayları: Options Parametresi
+
+Observer oluştururken ikinci parametre olan `options` nesnesi, izlemenin nasıl çalışacağını kontrol etmenizi sağlar. Üç temel özelliği var:
+
+```tsx
+const options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0
+};
+
+const observer = new IntersectionObserver(callback, options);
+```
+
+Her birini detaylıca inceleyelim.
+
+### **threshold (Eşik Değeri)**
+
+**"Elementin ne kadarı görünür olunca bildirim gelsin?"**
+
+Threshold, 0 ile 1 arasında bir değer alır veya bir dizi olabilir:
+
+- **0** → Elementin 1 pikseli bile göründüğünde tetiklenir
+- **0.5** → Elementin %50'si göründüğünde tetiklenir
+- **1** → Elementin tamamı göründüğünde tetiklenir
+
+```tsx
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const ratio = Math.round(entry.intersectionRatio * 100);
+    console.log(`Element ${ratio}% görünür`);
+  });
+}, {
+  threshold: [0, 0.25, 0.5, 0.75, 1]  // Her %25'te bir bildirim
+});
+```
+
+### root (Referans Element)
+
+**"Neye göre görünürlük kontrol edilsin?"**
+
+Varsayılan olarak Intersection Observer viewport'u (tarayıcı penceresini) referans alır. Ama `root` ile başka bir elementi de referans yapabilirsiniz.
+
+```tsx
+// Bir modal içindeki scroll'u izle
+const modal = document.querySelector('.modal');
+const modalObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      console.log('Modal içinde görünür oldu!');
+    }
+  });
+}, {
+  root: modal  // Modal içindeki görünürlüğü kontrol et
+});
+
+const content = document.querySelector('.modal-content');
+modalObserver.observe(content);
+```
+
+**Önemli:** root olarak belirtilen element, izlenen elementin bir üst elemanı (ancestor) olmalıdır.
+
+### rootMargin (Kenar Boşluğu)
+
+**"Tetikleme alanını genişlet veya daralt"**
+
+rootMargin, CSS margin sözdizimini kullanarak tetikleme alanını değiştirir. Pozitif değerler alanı genişletir, negatif değerler daraltır.
+
+```tsx
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const element = entry.target;
+    const visibility = Math.round(entry.intersectionRatio * 100);
+    
+    if (entry.isIntersecting) {
+      console.log(`${element.id} elementi ${visibility}% görünür`);
+      
+      // %75'ten fazla görünürse animasyon başlat
+      if (entry.intersectionRatio > 0.75) {
+        element.classList.add('fully-visible');
+      }
+    } else {
+      element.classList.remove('fully-visible');
+    }
+  });
+}, {
+  root: null,                          // Viewport'u referans al
+  rootMargin: '0px 0px -100px 0px',   // Alttan 100px daralt
+  threshold: [0, 0.25, 0.5, 0.75, 1]  // Her %25'te bildir
+});
+
+// Sayfadaki kartları izle
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => observer.observe(card));
+```
+
+Bu üç ayar (root, rootMargin ve threshold), Intersection Observer API'yi sadece "element görünür mü?" sorusuna yanıt veren basit bir araç olmaktan çıkarıp, farklı senaryolara uyarlanabilen **esnek, güçlü ve ince ayar yapılabilir** bir mekanizmaya dönüştürüyor. Doğru yapılandırıldığında, ister animasyon tetikleyin, ister lazy loading yapın, ister karmaşık bir scroll deneyimi oluşturun — Observer’ı tam olarak ihtiyaçlarınıza göre şekillendirebilirsiniz.
+
+## Gerçek Dünya Örnekleri
+
+Teorik bilgiler güzel ama şimdi Intersection Observer'ı gerçek projelerde nasıl kullanacağımızı görelim. En yaygın üç kullanım senaryosuna bakacağız.
+
+### 1. Lazy Loading (Geç Yükleme)
+
+Lazy loading, görsellerin veya içeriklerin sadece görünür olduklarında yüklenmesi anlamına gelir. Bu, sayfa yüklenme hızını önemli ölçüde artırır ve gereksiz veri kullanımını önler.
+
+### Sorun
+
+Bir sayfada 50 görsel var. Kullanıcı belki sadece 5 tanesini görecek ama tüm görseller sayfa açılırken yükleniyor. Sonuç:
+
+- Yavaş sayfa yüklenme süresi
+- Gereksiz veri kullanımı
+- Kötü kullanıcı deneyimi
+
+### Çözüm
+
+Görselleri sadece viewport'a girdiklerinde yükleyelim:
+
+```tsx
+// HTML'de görseller böyle olmalı:
+// <img data-src="image.jpg" alt="Açıklama" class="lazy-image">
+
+const lazyImages = document.querySelectorAll('img[data-src]');
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      
+      // data-src'deki gerçek görseli yükle
+      img.src = img.dataset.src;
+      
+      // Yükleme tamamlandığında class ekle (fade-in animasyonu için)
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
+      
+      // Artık bu görseli izlemeye gerek yok
+      observer.unobserve(img);
+    }
+  });
+}, {
+  rootMargin: '50px'  // Görsel viewport'a 50px kala yüklensin
+});
+
+// Tüm lazy görselleri izlemeye başla
+lazyImages.forEach(img => imageObserver.observe(img));
+```
+
+CSS ile Fade-in Animasyonu
+
+```tsx
+img[data-src] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+img.loaded {
+  opacity: 1;
+}
+```
+
+**Bu kadar!** Sadece birkaç satır kodla lazy loading özelliğini projenize ekleyebilirsiniz. Görseller viewport'a girmeden önce yüklenmez, bu da sayfa yüklenme hızını arttırır ve kullanıcı deneyimini iyileştirir.
+
+### Diğer Kullanım Alanları
+
+Intersection Observer API'nin kullanım alanı lazy loading ile sınırlı değil. Aynı mantıkla:
+
+**Animasyon Tetikleme:** Elementler ekrana girdiğinde `classList.add('animate')` ile fade-in, slide-in gibi animasyonları başlatabilirsiniz.
+
+**Infinite Scroll:** Listenin sonuna bir "sentinel" elementi koyup, bu element görünür olduğunda yeni içerik yükleyerek sonsuz scroll deneyimi oluşturabilirsiniz.
+
+**Analitik Takibi:** Hangi bölümlerin gerçekten görüntülendiğini takip edip analitik veriler toplayabilirsiniz.
+
+**Video Oynatma:** Video elementleri ekrana girdiğinde otomatik oynatma, çıktığında duraklatma yapabilirsiniz.
+
+Tüm bu senaryolar aynı temel mantığı kullanır: Element görünür olduğunda bir aksiyon tetikle.
+
+## Performans İpuçları ve Best Practices
+
+Intersection Observer API zaten performanslı bir çözüm sunuyor, ama doğru kullanmak önemli. İşte dikkat etmeniz gereken noktalar:
+
+### **1. Her element için ayrı observer oluşturmayın**
+
+Yanlış kullanım:
+
+```tsx
+elements.forEach(el => new IntersectionObserver(cb).observe(el));
+```
+
+Bu yaklaşım gereksiz observer üretir.
+
+Doğru kullanım:
+
+```tsx
+const observer = new IntersectionObserver(callback, options);
+elements.forEach(el => observer.observe(el));
+```
+
+Tek bir observer yüzlerce elementi izleyebilir.
+
+### **2. Element görünür olduktan sonra observer’ı kapatın**
+
+Lazy loading ve animasyon senaryolarında izlemeye devam etmenize gerek yoktur.
+
+```tsx
+if (entry.isIntersecting) {
+  observer.unobserve(entry.target);
+}
+```
+
+Bu hem hafızayı hem CPU yükünü azaltır.
+
+---
+
+### **3. rootMargin ile tetikleme alanını optimize edin**
+
+Özellikle lazy loading için görsel gözükmeden 100–200px önce tetiklemek daha iyi deneyim sağlar:
+
+```tsx
+rootMargin: "200px 0px"
+```
+
+### **4. SPA projelerinde observer’ı mutlaka temizleyin**
+
+React unmount olduğunda:
+
+```tsx
+useEffect(() => {
+  observer.observe(ref.current);
+  return () => observer.disconnect();
+}, []);
+
+```
+
+Temizlenmeyen observer'lar memory leak'e yol açabilir.
+
+### **5. Gereksiz yere çok fazla öğe izlemeyin**
+
+Özellikle infinite scroll gibi senaryolarda, listedeki her öğeyi ayrı ayrı izlemek yerine listenin **altına küçük bir tetikleyici element** (genelde görünmez bir `div`) koymak çok daha verimlidir. Bu tetikleyici ekrana geldiğinde yeni içerik yüklenir. Böylece yüzlerce elementi izlemek yerine sadece tek bir elementi takip etmiş olursunuz.
+
+Bu kısa rehber, Intersection Observer kullanımından maksimum performans almanız için ana noktaları özetler. Tarayıcı zaten işin büyük kısmını sizin yerinize yapıyor — önemli olan doğru yapılandırmak ve gereksiz maliyetleri ortadan kaldırmak.
+
+## Sonuç
+
+Intersection Observer API, yıllardır manuel olarak yönettiğimiz scroll kontrollerine daha modern ve daha verimli bir alternatif sunuyor. Elbette her senaryoda “tek doğru çözüm” olduğu iddia edilemez; ancak element görünürlüğüyle ilgili süreçlerde çoğu zaman **daha sade, daha stabil ve daha az kodla** ilerlemeyi mümkün kıldığı da bir gerçek.
+
+Lazy loading, animasyon tetikleme, infinite scroll veya görünürlük tabanlı analitik gibi yaygın kullanım alanlarında uygulamayı hem zihinsel hem de teknik açıdan sadeleştiriyor. Tarayıcının kendi optimize edilmiş mekanizmasını kullanması da performans açısından önemli bir avantaj sağlıyor.
+
+Kısacası Intersection Observer, görünürlük takibi gerektiren modern arayüzlerde güçlü bir seçenek sunuyor, ancak her araç gibi ihtiyaçlara ve bağlama göre değerlendirilmesi gereken bir parça. Doğru senaryoda doğru şekilde kullanıldığında, kullanıcı deneyimini daha akıcı ve daha verimli hale getirmekte önemli bir rol oynayabilir.
