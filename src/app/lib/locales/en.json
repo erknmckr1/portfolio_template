@@ -263,5 +263,15 @@
       "phoneValue": "(+706) 898-0751",
       "email": "erknm.ckr@gmail.com"
     }
+  },
+  "login": {
+    "title": "LOGIN",
+    "description": "Please sign in to your account with your email and password.",
+    "email": "Email Address",
+    "password": "Password",
+    "button": "Sign In",
+    "forgotPassword": "Forgot Password?",
+    "backToHome": "Back to Home",
+    "authError": "Invalid email or password."
   }
 }

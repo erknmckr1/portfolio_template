@@ -5,9 +5,12 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Services from "./components/services/Services";
 import Contact from "./components/contact/Contact";
 import BlogWrapper from "./components/blog/BlogWrapper";
-import { getAllPosts } from "./lib/get-all-posts";
+import { getAllPostsFromDB } from "./lib/supabase-posts";
+
 export default async function Home() {
-  const posts = await getAllPosts();
+  const posts = await getAllPostsFromDB();
+  // Sadece son 3 yazıyı ana sayfada gösterelim
+  const recentPosts = posts.slice(0, 3);
   return (
     <div className="">
       <Hero />
@@ -18,7 +21,7 @@ export default async function Home() {
       <Divider />
       <Services />
       <Divider />
-      <BlogWrapper blog={posts} />
+      <BlogWrapper blog={recentPosts} />
       <Divider />
       <Contact />
     </div>

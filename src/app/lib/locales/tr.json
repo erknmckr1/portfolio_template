@@ -259,5 +259,15 @@
       "phoneValue": "(+706) 898-0751",
       "email": "erknm.ckr@gmail.com"
     }
+  },
+  "login": {
+    "title": "GİRİŞ",
+    "description": "Lütfen e-posta adresiniz ve şifrenizle hesabınıza giriş yapın.",
+    "email": "E-posta Adresi",
+    "password": "Şifre",
+    "button": "Giriş Yap",
+    "forgotPassword": "Şifremi Unuttum",
+    "backToHome": "Ana Sayfaya Dön",
+    "authError": "Geçersiz e-posta veya şifre."
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useTranslation } from "@/app/lib/hooks/useTranslation";
 import {
   Twitter,
@@ -38,6 +39,7 @@ const NAV_LINKS = (t: TranslateFn) => [
 ];
 
 function Navbar() {
+  const pathname = usePathname();
   const dispatch = useDispatch();
   const { isOpen } = useSelector((state: RootState) => state.sidebar);
   const { language } = useSelector((state: RootState) => state.language);
@@ -45,6 +47,7 @@ function Navbar() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("#hero");
+
 
   /* -------------------------------
      Sidebar Toggle
@@ -83,6 +86,8 @@ function Navbar() {
     if (saved && saved !== language) dispatch(setChangeLanguage(saved));
   }, [dispatch, language]);
 
+  if (pathname === "/login" || pathname === "/admin") return null;
+
   /* -------------------------------
      Social Links
   -------------------------------- */
@@ -107,9 +112,8 @@ function Navbar() {
           DESKTOP SIDEBAR
       ================================ */}
       <aside
-        className={`hidden lg:flex font-signature fixed left-0 top-0 h-full border-r-4 border-black bg-white flex-col justify-between py-26 transition-all duration-500 ${
-          isOpen ? "w-[360px] px-8" : "w-20 px-0"
-        }`}
+        className={`hidden lg:flex font-signature fixed left-0 top-0 h-full border-r-4 border-black bg-white flex-col justify-between py-10 transition-all duration-500 z-50 overflow-hidden ${isOpen ? "w-[360px] px-8" : "w-[100px] px-4"
+          }`}
       >
         {/* Sidebar Toggle */}
         <button
@@ -136,14 +140,13 @@ function Navbar() {
             <a
               key={i}
               href={item.href}
-              className={`px-6 py-3 gap-x-4 flex items-center text-lg font-bold tracking-wide transition-all ${
-                activeHash === item.href.replace("/", "")
-                  ? "bg-black text-white"
-                  : "text-black hover:bg-black hover:text-white"
-              }`}
+              className={`px-6 py-3 gap-x-4 flex items-center text-lg font-bold tracking-wide transition-all ${activeHash === item.href.replace("/", "")
+                ? "bg-black text-white"
+                : "text-black hover:bg-black hover:text-white"
+                }`}
             >
-              <item.icon size={22} />
-              {isOpen && <span>{item.name}</span>}
+              <item.icon size={22} className="shrink-0" />
+              {isOpen && <span className="truncate">{item.name}</span>}
             </a>
           ))}
         </nav>
@@ -156,11 +159,10 @@ function Navbar() {
           <button
             onClick={handleToggleLanguage}
             className={`flex items-center justify-center border-2 border-black font-semibold uppercase transition-all 
-            ${
-              isOpen
+            ${isOpen
                 ? "px-4 py-2 text-black hover:bg-black hover:text-white"
                 : "w-10 h-10 bg-black text-white"
-            }`}
+              }`}
           >
             <Globe size={18} />
             {isOpen && <span className="ml-2">{language.toUpperCase()}</span>}
@@ -168,9 +170,8 @@ function Navbar() {
 
           {/* Social Icons */}
           <div
-            className={`flex justify-center ${
-              isOpen ? "space-x-3 pt-10" : "flex-col space-y-3 pt-4"
-            }`}
+            className={`flex justify-center ${isOpen ? "space-x-3 pt-10" : "flex-col space-y-3 pt-4"
+              }`}
           >
             {socialLinks.map(({ name, href, icon: Icon }) => (
               <a
@@ -190,75 +191,72 @@ function Navbar() {
       {/* ===============================
           MOBILE NAVBAR
       ================================ */}
-      <aside className="lg:hidden font-signature fixed top-0 left-0 w-full bg-black z-50 shadow-lg">
-        <div className="flex items-center justify-between px-6 py-4">
-          <h1 className="text-2xl font-extrabold tracking-widest text-white">
+      <nav className="lg:hidden font-signature fixed top-0 left-0 w-full bg-black z-[100] border-b-4 border-black shadow-lg">
+        <div className="flex items-center justify-between px-6 py-4 h-20">
+          <h1 className="text-2xl font-black tracking-widest text-white uppercase">
             <span className="border-b-4 border-white pb-1">
-              {t("navbar.logo")}
+              {t("navbar.logo").split('.')[0]}
             </span>
           </h1>
 
           <div className="flex items-center gap-4">
-            {/* Language */}
             <button
               onClick={handleToggleLanguage}
-              className="flex items-center justify-center w-14 h-10 text-white hover:bg-white hover:text-black transition"
+              className="flex items-center justify-center h-10 px-3 text-white border-2 border-white font-bold hover:bg-white hover:text-black transition uppercase text-xs"
             >
               <Globe size={18} />
-              <span className="ml-1 text-sm font-semibold">
+              <span className="ml-1">
                 {language.toUpperCase()}
               </span>
             </button>
 
-            {/* Mobile Menu */}
             <button
               onClick={handleMobileToggle}
               className="text-white hover:opacity-80 transition"
             >
-              {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
+              {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Dropdown */}
-        <nav
-          className={`absolute left-0 w-full flex flex-col gap-y-3 py-4 bg-white text-black shadow-xl overflow-hidden transition-all duration-500 
-          ${
-            isMobileMenuOpen
-              ? "max-h-[800px] opacity-100"
+        <div
+          className={`absolute left-0 w-full bg-white text-black border-b-4 border-black shadow-2xl transition-all duration-500 overflow-hidden ${isMobileMenuOpen
+              ? "max-h-[85vh] opacity-100"
               : "max-h-0 opacity-0 pointer-events-none"
-          }`}
+            }`}
         >
-          {NAV_LINKS(t).map((item, i) => (
-            <a
-              key={i}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`flex items-center gap-x-4 px-6 py-2 text-lg font-semibold transition ${
-                activeHash === item.href.replace("/", "")
-                  ? "bg-black text-white"
-                  : "hover:bg-black hover:text-white"
-              }`}
-            >
-              <item.icon size={22} />
-              {item.name}
-            </a>
-          ))}
-
-          {/* Socials */}
-          <div className="flex justify-center space-x-4 border-t border-black pt-4 mt-4">
-            {socialLinks.map(({ name, href, icon: Icon }) => (
+          <div className="flex flex-col p-6 space-y-2">
+            {NAV_LINKS(t).map((item, i) => (
               <a
-                key={name}
-                href={href}
-                className="w-10 h-10 border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition"
+                key={i}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`flex items-center gap-x-4 px-6 py-4 text-xl font-black uppercase tracking-tighter border-2 border-transparent transition ${activeHash === item.href.replace("/", "")
+                    ? "bg-black text-white border-black"
+                    : "hover:border-black"
+                  }`}
               >
-                <Icon size={20} />
+                <item.icon size={24} />
+                {item.name}
               </a>
             ))}
+
+            {/* Socials */}
+            <div className="flex justify-center flex-wrap gap-4 border-t-4 border-black pt-8 mt-6">
+              {socialLinks.map(({ name, href, icon: Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  className="w-14 h-14 bg-black text-white flex items-center justify-center hover:bg-white hover:text-black hover:border-black border-2 border-transparent transition"
+                >
+                  <Icon size={24} />
+                </a>
+              ))}
+            </div>
           </div>
-        </nav>
-      </aside>
+        </div>
+      </nav>
     </>
   );
 }

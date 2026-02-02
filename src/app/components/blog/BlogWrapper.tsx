@@ -5,8 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslation } from "@/app/lib/hooks/useTranslation";
-import { PostMeta } from "@/app/lib/get-all-posts";
-function BlogWrapper({ blog }: { blog: PostMeta[] }) {
+import { BlogPost } from "@/app/lib/supabase-posts";
+function BlogWrapper({ blog }: { blog: BlogPost[] }) {
   const { t } = useTranslation();
 
   const containerVariants = {
@@ -48,27 +48,29 @@ function BlogWrapper({ blog }: { blog: PostMeta[] }) {
             className="flex  items-start gap-6 lg:gap-16"
           >
             {/* Görsel */}
-            <div className="relative w-full lg:w-1/2 overflow-hidden">
-              <Image
-                src={"/pic.avif"}
-                alt="Blog Post"
+            <div className="relative w-full lg:w-1/2 overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-gray-100">
+              <img
+                src={item.image_url || "/pic.avif"}
+                alt={item.title}
                 width={600}
                 height={400}
-                className="w-full  h-[100px] lg:h-[420px] object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full h-[200px] lg:h-[420px] object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
 
             {/* Metin içeriği */}
             <div className="flex flex-col justify-center space-y-6 lg:w-1/2">
               <h3
-              
+
                 className="sm:text-2xl lg:text-3xl font-semibold leading-snug text-black hover:text-yellow-500 transition-colors duration-300 cursor-pointer underline underline-offset-2"
                 style={{ fontFamily: "serif" }}
               >
                 {item.title}
               </h3>
 
-              <p className="text-gray-700 text-base">{item.date}</p>
+              <p className="text-gray-500 font-black uppercase tracking-widest text-sm">
+                {new Date(item.created_at).toLocaleDateString("tr-TR")}
+              </p>
 
               <Link href={`/blog/${item.slug}`} className="lg:px-8 lg:py-3 text-sm p-2 lg:text-lg  bg-yellow-400 hover:bg-yellow-500 text-black font-semibold uppercase tracking-wide transition-colors duration-300 shadow-md w-fit">
                 {t("blog.button")}
