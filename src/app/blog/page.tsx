@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { getAllPostsFromDB } from "../lib/supabase-posts";
+import { calculateReadingTime } from "../lib/utils/readingTime";
+import ViewCounter from "../components/blog/ViewCounter";
 
 export default async function BlogListPage() {
   const posts = await getAllPostsFromDB();
-
   return (
     <main className="mx-auto max-w-4xl py-16 px-4">
       <h1 className="text-6xl font-black mb-6 uppercase tracking-tighter" style={{ fontFamily: "serif" }}>
@@ -40,7 +41,14 @@ export default async function BlogListPage() {
             )}
 
             <div className="mt-8 flex items-center justify-between text-xs font-black uppercase tracking-widest border-t-2 border-black pt-4">
-              <span>{new Date(post.created_at).toLocaleDateString("tr-TR")}</span>
+              <div className="flex items-center gap-2">
+                <span>{new Date(post.created_at).toLocaleDateString("tr-TR")}</span>
+                <span className="text-gray-400">•</span>
+                <span>{calculateReadingTime(post.content)}</span>
+                <span className="text-gray-400">•</span>
+                <ViewCounter postId={post.id} initialViews={post.view_count || 0} increment={false} />
+              </div>
+
 
               {post.tags && post.tags.length > 0 && (
                 <div className="flex gap-2">

@@ -1,4 +1,3 @@
-// app/blog/[slug]/page.tsx
 
 import { getPostBySlug, getAllPostsFromDB } from "@/app/lib/supabase-posts";
 import { notFound } from "next/navigation";
@@ -13,6 +12,9 @@ export async function generateStaticParams() {
 
 import { extractHeadingsAndAddIds } from "@/app/lib/utils/toc";
 import TOC from "@/app/components/blog/TOC";
+import { calculateReadingTime } from "@/app/lib/utils/readingTime";
+import ViewCounter from "@/app/components/blog/ViewCounter";
+import RelatedPosts from "@/app/components/blog/RelatedPosts";
 
 export default async function BlogPostPage({
   params,
@@ -25,6 +27,7 @@ export default async function BlogPostPage({
   if (!post) return notFound();
 
   const { modifiedHtml, headings } = extractHeadingsAndAddIds(post.content);
+  const readingTime = calculateReadingTime(post.content);
 
   return (
     <div className="w-full max-w-7xl mx-auto py-24 px-4 bg-white flex flex-col xl:flex-row items-start">
@@ -38,6 +41,12 @@ export default async function BlogPostPage({
           )}
           <span className="text-sm font-black uppercase tracking-widest text-gray-400">
             {new Date(post.created_at).toLocaleDateString("tr-TR")}
+          </span>
+          <span className="text-sm font-black uppercase tracking-widest text-gray-400">
+            • {readingTime}
+          </span>
+          <span className="text-sm font-black uppercase tracking-widest text-gray-400 border-l border-gray-300 pl-4 ml-2">
+            <ViewCounter postId={post.id} initialViews={post.view_count || 0} />
           </span>
         </div>
 
@@ -81,6 +90,9 @@ export default async function BlogPostPage({
         <article>
           <BlogContentViewer htmlContent={modifiedHtml} />
         </article>
+
+        <RelatedPosts category={post.category} currentSlug={post.slug} />
+
       </main>
 
       {/* Sidebar / TOC */}

@@ -54,7 +54,7 @@ export default function TOC({ headings }: TOCProps) {
 
     return (
         <nav className="hidden xl:block sticky top-24 w-64 ml-20 shrink-0 max-h-[calc(100vh-120px)] flex flex-col">
-            <div className="border-4 border-black p-6 bg-yellow-400 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col min-h-0">
+            <div className="border-4 border-black p-6 bg-secondary shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col min-h-0">
                 <h3 className="text-xl font-black uppercase tracking-tighter mb-4 border-b-4 border-black pb-2 shrink-0">
                     İçindekiler
                 </h3>

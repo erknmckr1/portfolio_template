@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslation } from "@/app/lib/hooks/useTranslation";
 import { BlogPost } from "@/app/lib/supabase-posts";
+import ViewCounter from "./ViewCounter";
+import { calculateReadingTime } from "@/app/lib/utils/readingTime";
 function BlogWrapper({ blog }: { blog: BlogPost[] }) {
   const { t } = useTranslation();
 
@@ -29,7 +31,7 @@ function BlogWrapper({ blog }: { blog: BlogPost[] }) {
 
 
   return (
-    <div id="blog" className="max-w-7xl mx-auto py-24 px-4">
+    <div id="blog" className="max-w-7xl space-y-16 mx-auto py-24 px-4">
       {/* Başlık alanı */}
       <TitleArea title={t("blog.title")} description={t("blog.description")} />
 
@@ -39,7 +41,7 @@ function BlogWrapper({ blog }: { blog: BlogPost[] }) {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="pt-20 space-y-10"
+        className=" space-y-10"
       >
         {blog.map((item) => (
           <motion.div
@@ -68,17 +70,25 @@ function BlogWrapper({ blog }: { blog: BlogPost[] }) {
                 {item.title}
               </h3>
 
-              <p className="text-gray-500 font-black uppercase tracking-widest text-sm">
-                {new Date(item.created_at).toLocaleDateString("tr-TR")}
-              </p>
+              <div className="flex items-center gap-2  text-xs sm:text-lg">
+                <span>{new Date(item.created_at).toLocaleDateString("tr-TR")}</span>
+                <span className="text-gray-400">•</span>
+                <span>{calculateReadingTime(item.content)}</span>
+                <span className="text-gray-400">•</span>
+                <ViewCounter postId={item.id} initialViews={item.view_count || 0} increment={false} />
+              </div>
 
-              <Link href={`/blog/${item.slug}`} className="lg:px-8 lg:py-3 text-sm p-2 lg:text-lg  bg-yellow-400 hover:bg-yellow-500 text-black font-semibold uppercase tracking-wide transition-colors duration-300 shadow-md w-fit">
+              <Link href={`/blog/${item.slug}`} className="lg:px-8 lg:py-3 text-xs p-2 lg:text-lg  bg-yellow-400 hover:bg-yellow-500 text-black font-semibold uppercase tracking-wide transition-colors duration-300 shadow-md w-fit">
                 {t("blog.button")}
               </Link>
             </div>
           </motion.div>
         ))}
       </motion.section>
+      <div className="flex justify-center">
+        <Link href="/blog" className="lg:px-8 lg:py-3 text-center text-sm p-2 lg:text-lg  bg-yellow-400 hover:bg-yellow-500 text-black font-semibold uppercase tracking-wide transition-colors duration-300 shadow-md w-fit">Daha Fazlası İçin Tıklayın...</Link>
+      </div>
+
     </div>
   );
 }

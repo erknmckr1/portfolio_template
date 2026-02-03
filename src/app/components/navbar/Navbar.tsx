@@ -141,8 +141,8 @@ function Navbar() {
               key={i}
               href={item.href}
               className={`px-6 py-3 gap-x-4 flex items-center text-lg font-bold tracking-wide transition-all ${activeHash === item.href.replace("/", "")
-                ? "bg-black text-white"
-                : "text-black hover:bg-black hover:text-white"
+                ? "bg-secondary text-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                : "text-black hover:bg-secondary hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:text-black"
                 }`}
             >
               <item.icon size={22} className="shrink-0" />
@@ -222,8 +222,8 @@ function Navbar() {
         {/* Mobile Dropdown */}
         <div
           className={`absolute left-0 w-full bg-white text-black border-b-4 border-black shadow-2xl transition-all duration-500 overflow-hidden ${isMobileMenuOpen
-              ? "max-h-[85vh] opacity-100"
-              : "max-h-0 opacity-0 pointer-events-none"
+            ? "max-h-[85vh] opacity-100"
+            : "max-h-0 opacity-0 pointer-events-none"
             }`}
         >
           <div className="flex flex-col p-6 space-y-2">
@@ -233,8 +233,8 @@ function Navbar() {
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center gap-x-4 px-6 py-4 text-xl font-black uppercase tracking-tighter border-2 border-transparent transition ${activeHash === item.href.replace("/", "")
-                    ? "bg-black text-white border-black"
-                    : "hover:border-black"
+                  ? "bg-black text-white border-black"
+                  : "hover:border-black"
                   }`}
               >
                 <item.icon size={24} />
