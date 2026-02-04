@@ -2,21 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/app/lib/hooks/useTranslation";
-function Portfolio() {
+import { Project } from "@/app/lib/supabase-posts";
+
+function Portfolio({ projects }: { projects: Project[] }) {
   const { t } = useTranslation();
-  type ProjectType =
-    | "frontend"
-    | "backend"
-    | "fullstack"
-    | "uiux"
-    | "mobile"
-    | "devops"
-    | "ai"
-    | "other";
 
   //  Type ve Status renkleri
-  const getStatusColor = (status: string) => {
-    switch (status.toLowerCase()) {
+  const getStatusColor = (status: Project["status"]) => {
+    switch (status) {
       case "design":
         return "bg-pink-500 text-white";
       case "development":
@@ -34,7 +27,7 @@ function Portfolio() {
     }
   };
 
-  const getTypeColor = (type: ProjectType): string => {
+  const getTypeColor = (type: Project["type"]): string => {
     switch (type) {
       case "frontend":
         return "bg-blue-500 text-white";
@@ -50,6 +43,8 @@ function Portfolio() {
         return "bg-yellow-400 text-black";
       case "ai":
         return "bg-indigo-600 text-white";
+      case "other":
+        return "bg-gray-300 text-black";
       default:
         return "bg-gray-300 text-black";
     }
@@ -82,18 +77,6 @@ function Portfolio() {
       transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
-
-  const portfolioItems = t<
-    {
-      title: string;
-      subtitle: string;
-      image: string;
-      type: string;
-      status: string;
-      tech: string[];
-      description: string;
-    }[]
-  >("portfolio.projects");
 
   return (
     <section
@@ -145,73 +128,110 @@ function Portfolio() {
         </motion.button>
       </div>
 
-      {/* === Portfolio Grid === */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        className="w-full grid grid-cols-1 sm:grid-cols-2 gap-12"
-      >
-        {portfolioItems.map((item, index) => (
-          <motion.div key={index} variants={cardVariants}>
-            <div className="group cursor-pointer relative">
-              {/* Image */}
-              <div className="overflow-hidden relative">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-[280px] lg:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500"
-                />
+      {/* Empty State */}
+      {projects.length === 0 ? (
+        <div className="w-full text-center py-20">
+          <p className="text-2xl font-black uppercase text-gray-400">
+            {t("portfolio.noProjects") || "Henüz proje eklenmemiş"}
+          </p>
+        </div>
+      ) : (
+        /* === Portfolio Grid === */
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="w-full grid grid-cols-1 sm:grid-cols-2 gap-12"
+        >
+          {projects.map((item, index) => (
+            <motion.div key={index} variants={cardVariants}>
+              <div className="group cursor-pointer relative">
+                {/* Image */}
+                <div className="overflow-hidden relative">
+                  <img
+                    src={item.image_url}
+                    alt={item.title}
+                    className="w-full h-[280px] lg:h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  />
 
-                {/* Badge */}
-                <div
-                  className={`absolute uppercase top-4 left-4 px-4 py-1 rounded-md font-semibold text-sm border border-black shadow-md ${getTypeColor(
-                    item.type as ProjectType
-                  )}`}
-                >
-                  {item.type}
-                </div>
-                <div
-                  className={`${getStatusColor(
-                    item.status
-                  )} absolute top-4 right-4 px-4 uppercase py-1 rounded-md font-semibold text-sm border border-black shadow-md`}
-                >
-                  {item.status}
-                </div>
+                  {/* Badge */}
+                  <div
+                    className={`absolute uppercase top-4 left-4 px-4 py-1 rounded-md font-semibold text-sm border border-black shadow-md ${getTypeColor(
+                      item.type
+                    )}`}
+                  >
+                    {item.type}
+                  </div>
+                  <div
+                    className={`${getStatusColor(
+                      item.status
+                    )} absolute top-4 right-4 px-4 uppercase py-1 rounded-md font-semibold text-sm border border-black shadow-md`}
+                  >
+                    {item.status}
+                  </div>
 
-                {/* Hover Katmanı */}
-                <div className="absolute inset-0 bg-black/90 text-white opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-500 flex flex-col  p-6">
-                  <h3 className="text-lg md:text-xl font-bold mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-gray-200 line-clamp-3">
-                    {item.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {item.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs bg-white text-black px-2 py-1 rounded font-semibold"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  {/* Hover Katmanı */}
+                  <div className="absolute inset-0 bg-black/90 text-white opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-500 flex flex-col p-6">
+                    <h3 className="text-lg md:text-xl font-bold mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-200 line-clamp-3">
+                      {item.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {item.tech.map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-xs bg-white text-black px-2 py-1 rounded font-semibold"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Project Links */}
+                    {(item.live_link || item.github_link) && (
+                      <div className="flex gap-4 mt-auto pt-4 border-t border-white/20">
+                        {item.live_link && (
+                          <a
+                            href={item.live_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 text-center py-2 bg-yellow-400 text-black font-bold uppercase text-[10px] border-2 border-black shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all outline-none"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Canlı Demo
+                          </a>
+                        )}
+                        {item.github_link && (
+                          <a
+                            href={item.github_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 text-center py-2 bg-white text-black font-bold uppercase text-[10px] border-2 border-black shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all outline-none"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            GitHub
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
 
-              {/* Text */}
-              <div className="text-center mt-4 space-y-2">
-                <h4 className="relative inline-block font-bold text-xl text-black after:content-[''] after:absolute after:left-0 after:hover:text-yellow-400 after:-bottom-1 after:w-full after:h-0.5 after:bg-black">
-                  {item.title}
-                </h4>
-                <p className="text-gray-600 mt-1 text-sm">{item.subtitle}</p>
+                {/* Text */}
+                <div className="text-center mt-4 space-y-2">
+                  <h4 className="relative inline-block font-bold text-xl text-black after:content-[''] after:absolute after:left-0 after:hover:text-yellow-400 after:-bottom-1 after:w-full after:h-0.5 after:bg-black">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-600 mt-1 text-sm">{item.subtitle}</p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
     </section>
   );
 }

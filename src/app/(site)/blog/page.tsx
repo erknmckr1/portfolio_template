@@ -1,9 +1,9 @@
 // app/blog/page.tsx
 
 import Link from "next/link";
-import { getAllPostsFromDB } from "../lib/supabase-posts";
-import { calculateReadingTime } from "../lib/utils/readingTime";
-import ViewCounter from "../components/blog/ViewCounter";
+import { getAllPostsFromDB } from "@/app/lib/supabase-posts";
+import { calculateReadingTime } from "@/app/lib/utils/readingTime";
+import ViewCounter from "@/app/components/blog/ViewCounter";
 
 export default async function BlogListPage() {
   const posts = await getAllPostsFromDB();

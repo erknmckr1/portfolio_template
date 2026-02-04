@@ -25,6 +25,24 @@ export interface BlogPost {
     view_count: number;
 }
 
+export interface Project {
+    id: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    image_url: string;
+    type: 'frontend' | 'backend' | 'fullstack' | 'uiux' | 'mobile' | 'devops' | 'ai' | 'other';
+    status: 'design' | 'development' | 'branding' | 'illustration' | 'featured' | 'finished';
+    tech: string[];
+    is_published: boolean;
+    display_order: number;
+    live_link?: string;
+    github_link?: string;
+    created_at: string;
+    updated_at: string;
+}
+
+// --- POST --- //
 export async function getAllPostsFromDB() {
     const supabase = await getSupabase();
     const { data, error } = await supabase
@@ -77,4 +95,19 @@ export async function getRelatedPosts(category: string, currentSlug: string) {
     }
 
     return data as BlogPost[];
+}
+
+// --- PROJECT --- //
+
+export async function getAllProjectsFromDB() {
+    const supabase = await getSupabase();
+    const { data, error } = await supabase.from("projects").select("*").eq("is_published", true).order("created_at", { ascending: false });
+
+    if (error || !data) {
+        console.error("Error fetching all posts:", error.message);
+        return [];
+    };
+
+    return data as Project[];
+
 }
