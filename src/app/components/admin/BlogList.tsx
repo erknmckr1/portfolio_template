@@ -64,7 +64,7 @@ export default function BlogList({ onEdit }: BlogListProps) {
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-black uppercase tracking-tighter" style={{ fontFamily: "serif" }}>
+                <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter" style={{ fontFamily: "serif" }}>
                     Blog Yazıların
                 </h2>
                 <div className="bg-black text-white px-4 py-2 font-bold text-sm">

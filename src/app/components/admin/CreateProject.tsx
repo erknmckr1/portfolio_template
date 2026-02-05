@@ -162,9 +162,9 @@ export default function CreateProject({ editingProject, onCancel, onSuccess }: C
     };
 
     return (
-        <form className="space-y-8">
+        <form className="space-y-8 px-1">
             {/* Title & Subtitle */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6">
                 <div>
                     <label className="block text-sm font-black uppercase tracking-widest mb-2">
                         Proje Başlığı *
@@ -193,7 +193,7 @@ export default function CreateProject({ editingProject, onCancel, onSuccess }: C
             </div>
 
             {/* Linkler */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6">
                 <div>
                     <label className="block text-sm font-black uppercase tracking-widest mb-2">
                         Canlı Link (Opsiyonel)
@@ -202,7 +202,7 @@ export default function CreateProject({ editingProject, onCancel, onSuccess }: C
                         type="url"
                         value={formData.live_link}
                         onChange={(e) => setFormData({ ...formData, live_link: e.target.value })}
-                        className="w-full px-4 py-3 border-4 border-black focus:outline-none focus:ring-4 focus:ring-yellow-400 font-bold font-mono"
+                        className="w-full px-4 py-3 border-4 border-black focus:outline-none focus:ring-4 focus:ring-yellow-400 font-bold font-mono text-xs md:text-sm"
                         placeholder="https://proje-canli.com"
                     />
                 </div>
@@ -214,7 +214,7 @@ export default function CreateProject({ editingProject, onCancel, onSuccess }: C
                         type="url"
                         value={formData.github_link}
                         onChange={(e) => setFormData({ ...formData, github_link: e.target.value })}
-                        className="w-full px-4 py-3 border-4 border-black focus:outline-none focus:ring-4 focus:ring-yellow-400 font-bold font-mono"
+                        className="w-full px-4 py-3 border-4 border-black focus:outline-none focus:ring-4 focus:ring-yellow-400 font-bold font-mono text-xs md:text-sm"
                         placeholder="https://github.com/kullanici/proje"
                     />
                 </div>
@@ -286,28 +286,28 @@ export default function CreateProject({ editingProject, onCancel, onSuccess }: C
             </div>
 
             {/* Technologies */}
-            <div>
+            <div className="w-full">
                 <label className="block text-sm font-black uppercase tracking-widest mb-2">
                     Teknolojiler
                 </label>
-                <div className="flex gap-2 mb-3">
+                <div className="flex flex-col sm:flex-row gap-2 mb-3">
                     <input
                         type="text"
                         value={techInput}
                         onChange={(e) => setTechInput(e.target.value)}
                         onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addTech())}
-                        className="flex-1 px-4 py-3 border-4 border-black focus:outline-none focus:ring-4 focus:ring-yellow-400 font-bold"
+                        className="flex-1 px-3 py-3 border-4 border-black focus:outline-none focus:ring-4 focus:ring-yellow-400 font-bold text-sm"
                         placeholder="Örn: React, Node.js"
                     />
                     <button
                         type="button"
                         onClick={addTech}
-                        className="px-6 py-3 bg-black text-white font-bold uppercase border-4 border-black hover:bg-yellow-400 hover:text-black transition-colors flex items-center gap-2"
+                        className="px-4 py-3 bg-black text-white font-bold uppercase border-4 border-black hover:bg-yellow-400 hover:text-black transition-colors flex items-center justify-center gap-2 text-sm shrink-0"
                     >
-                        <Plus size={18} /> Ekle
+                        <Plus size={16} /> Ekle
                     </button>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 max-w-full overflow-hidden">
                     {formData.tech.map((tech, i) => (
                         <span
                             key={i}
@@ -354,12 +354,12 @@ export default function CreateProject({ editingProject, onCancel, onSuccess }: C
             </div>
 
             {/* Actions */}
-            <div className="flex gap-4 pt-6 border-t-4 border-black">
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t-4 border-black">
                 <button
                     type="button"
                     onClick={handlePreConfirmCreate}
                     disabled={loading}
-                    className="flex-1 px-6 py-4 bg-black text-white font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="flex-2 px-6 py-4 bg-black text-white font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                 >
                     <Save size={20} />
                     {loading ? "Kaydediliyor..." : editingProject ? "Güncelle" : "Kaydet"}
@@ -367,7 +367,7 @@ export default function CreateProject({ editingProject, onCancel, onSuccess }: C
                 <button
                     type="button"
                     onClick={onCancel}
-                    className="px-6 py-4 bg-white text-black font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all flex items-center gap-2"
+                    className="flex-1 px-6 py-4 bg-white text-black font-bold uppercase border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all flex items-center gap-2 justify-center"
                 >
                     <X size={20} />
                     İptal

@@ -101,9 +101,9 @@ export default function ProjectList({ onEdit }: ProjectListProps) {
             {projects.map((project) => (
                 <div
                     key={project.id}
-                    className="border-4 border-black bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+                    className="border-4 border-black bg-white p-2 sm:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
                 >
-                    <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex flex-col md:flex-row sm:gap-6 gap-2">
                         {/* Image */}
                         <div className="w-full md:w-48 h-32 border-2 border-black overflow-hidden shrink-0">
                             <img

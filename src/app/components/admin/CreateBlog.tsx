@@ -134,7 +134,7 @@ export default function CreateBlog({ editingBlog, onCancel }: CreateBlogProps) {
             variants={textVariants}
             initial="hidden"
             animate="show"
-            className="w-full bg-white border-4 border-black p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+            className="w-full bg-white border-4 border-black p-4 md:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
         >
             <h2 className="text-3xl font-black mb-8 uppercase tracking-tighter" style={{ fontFamily: "serif" }}>
                 {editingBlog ? "Blog Yazısını Düzenle" : "Yeni Blog Yazısı"}
@@ -223,16 +223,16 @@ export default function CreateBlog({ editingBlog, onCancel }: CreateBlogProps) {
                 {/* Mesaj */}
                 {message.text && (
                     <div className={`p-4 font-bold border-2 border-black ${message.type === "success" ? "bg-green-200" : "bg-red-200"}`}>
-                        {message.type === "success" ? "✅ " : "❌ "} {message.text}
+                        {message.type === "success" ? "  " : " "} {message.text}
                     </div>
                 )}
 
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                     {onCancel && (
                         <button
                             type="button"
                             onClick={onCancel}
-                            className="flex-1 py-5 font-black uppercase tracking-widest border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-100 transition-all active:shadow-none active:translate-x-1 active:translate-y-1"
+                            className="flex-1 py-5 font-black uppercase tracking-widest border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-100 transition-all active:shadow-none active:translate-x-1 active:translate-y-1"
                         >
                             İptal
                         </button>
@@ -240,7 +240,7 @@ export default function CreateBlog({ editingBlog, onCancel }: CreateBlogProps) {
                     <button
                         type="submit"
                         disabled={loading}
-                        className={`py-5 font-black uppercase tracking-widest border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all active:shadow-none active:translate-x-1 active:translate-y-1 ${onCancel ? "flex-[2]" : "w-full"
+                        className={`py-5 font-black uppercase tracking-widest border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all active:shadow-none active:translate-x-1 active:translate-y-1 ${onCancel ? "flex-2" : "w-full"
                             } ${loading ? "bg-gray-200" : "bg-yellow-400 hover:bg-yellow-500"}`}
                     >
                         {loading ? "Kaydediliyor..." : editingBlog ? "Değişiklikleri Kaydet" : "Blog Yazısını Yayınla"}
